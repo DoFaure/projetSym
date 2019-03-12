@@ -76,3 +76,12 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    service:                               # this lines
+        mailer: fos_user.mailer.twig_swift # this lines
+    from_email:
+        address: "null"
+        sender_name: "null"
