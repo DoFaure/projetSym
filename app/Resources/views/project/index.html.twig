@@ -29,7 +29,9 @@
                 <td>{{ project.etatP }}</td>
                 <td>{{ project.nomClient }}</td>
                 <td>{{ project.idChefP }}</td>
-                <td>{{ project.taches }}</td>
+                {%  for Task in project.taches %}
+                    <td>{{ dump(Task) }}</td>
+                {% endfor %}
                 <td>
                     <ul>
                         <li>

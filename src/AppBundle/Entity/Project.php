@@ -1,13 +1,14 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
  * Project
  *
- * @ORM\Table(name="Project")
+ * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjectRepository")
  *
  */
@@ -60,18 +61,16 @@ class Project
     private $nomClient;
 
     /**
-     * @ORM\OneToMany(targetEntity="User", mappedBy="id")
-     * @ORM\Column(name="idChefP", type="integer")
-     * @ORM\JoinColumn(name="idChefP", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="projetU")
+     *
      */
     private $idChefP;
 
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="id")
-     * @ORM\Column(name="idTacheP", type="integer")
-     * @ORM\JoinColumn(name="idTacheP", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="idProjetT")
+     *
      */
     private $taches;
 
@@ -81,8 +80,11 @@ class Project
         $this->taches = new ArrayCollection();
     }
 
-
-
+    public function __toString()
+    {
+        // to show the name of the Category in the select
+        return $this->nomP;
+    }
     /**
      * Get id.
      *

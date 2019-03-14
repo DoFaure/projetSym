@@ -1,12 +1,16 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+
+
 /**
  * Task
- * @ORM\Table(name="Task")
- * @ORM\Entity(repositoryClass="AppBundle\Entity")
+ *
+ * @ORM\Table(name="task")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TaskRepository")
  */
 class Task
 {
@@ -50,23 +54,25 @@ class Task
     private $etatT;
 
     /**
-     * @ORM\Column(name="idProjetT", type="integer")
-     * @ORM\OneToOne(targetEntity="Project", mappedBy="id")
-     * @ORM\JoinColumn(name="idProjetT", referencedColumnName="id") 
+     *
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="taches")
+     * 
      */
     private $idProjetT;
 
     /**
-     * @ORM\Column(name="idDevT", type="integer")
-     * @ORM\OneToMany(targetEntity="User", mappedBy="id")
-     * @ORM\JoinColumn(name="idDevT", referencedColumnName="id") 
+     * @var integer
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="tacheU")
+     *
      */
     private $idDevT;
 
 
     public function __construct()
     {
-    	$this->idDevT = new ArrayCollection();
+
     }
 
 
@@ -75,7 +81,7 @@ class Task
      *
      * @return int
      */
-    public function getIdT()
+    public function getId()
     {
         return $this->id;
     }
@@ -144,6 +150,7 @@ class Task
 
     /**
      * Get dateDebutT.
+     *
      *
      * @return \DateTime
      */

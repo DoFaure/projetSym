@@ -1,26 +1,27 @@
 <?php
 
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use FOS\UserBundle\Model\User as BaseUser;
+
 /**
  * User
  *
- * @ORM\Table(name="User")
- * @ORM\Entity(repositoryClass="AppBundle\Entity")
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
 
-class User
+class User extends BaseUser
 {
-  
+
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\ManyToOne(targetEntity="Task", inversedBy="idDevT", cascade={"persist"})
-     * @ORM\ManyToOne(targetEntity="Project", inversedBy="idChefP", cascade={"persist"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -47,22 +48,22 @@ class User
     private $role;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Project",  cascade={"persist"})
-     * @ORM\JoinColumn(name="projetU", referencedColumnName="id") 
+     * @ORM\OneToMany(targetEntity="Project", mappedBy="idChefP")
+     *
      */
     private $projetU;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Task", cascade={"persist"})
-     * @ORM\JoinColumn(name="tacheU", referencedColumnName="id") 
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="idDevT")
+     *
      */
     private $tacheU;
 
 
     public function __construct()
     {
-    	$this->projetU = new ArrayCollection();
-    	$this->tacheU = new ArrayCollection();
+        $this->projetU = new ArrayCollection();
+        $this->tacheU = new ArrayCollection();
     }
 
 
@@ -71,7 +72,7 @@ class User
      *
      * @return int
      */
-    public function getIdUser()
+    public function getId()
     {
         return $this->id;
     }

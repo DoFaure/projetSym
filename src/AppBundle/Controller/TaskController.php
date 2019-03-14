@@ -129,7 +129,7 @@ class TaskController extends Controller
     private function createDeleteForm(Task $task)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('task_delete', array('id' => $task->getIdT())))
+            ->setAction($this->generateUrl('task_delete', array('id' => $task->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
