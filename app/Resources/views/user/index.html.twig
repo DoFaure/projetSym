@@ -7,10 +7,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nameu</th>
-                <th>Preu</th>
-                <th>Mdp</th>
-                <th>Role</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,10 +16,9 @@
         {% for user in users %}
             <tr>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.nameU }}</td>
-                <td>{{ user.preU }}</td>
-                <td>{{ user.mdp }}</td>
-                <td>{{ user.role }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.firstname }}</td>
+
                 <td>
                     <ul>
                         <li>

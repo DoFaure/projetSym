@@ -25,27 +25,16 @@ class User extends BaseUser
 
     /**
      * @var string
-     * @ORM\Column(name="nomU", type="string")
+     * @ORM\Column(name="lastname", type="string")
      */
-    private $nameU;
+    private $lastname;
 
     /**
      * @var string
-     * @ORM\Column(name="preU", type="string")
+     * @ORM\Column(name="firstname", type="string")
      */
-    private $preU;
+    private $firstname;
 
-    /**
-     * @var string
-     * @ORM\Column(name="mdp", type="string")
-     */
-    private $mdp;
-
-    /**
-     * @var string
-     * @ORM\Column(name="role", type="string")
-     */
-    private $role;
 
     /**
      * @ORM\OneToMany(targetEntity="Project", mappedBy="idChefP")
@@ -62,6 +51,7 @@ class User extends BaseUser
 
     public function __construct()
     {
+        parent::__construct();
         $this->projetU = new ArrayCollection();
         $this->tacheU = new ArrayCollection();
     }
@@ -80,13 +70,13 @@ class User extends BaseUser
     /**
      * Set nameU.
      *
-     * @param string $nameU
+     * @param string $lastname
      *
      * @return User
      */
-    public function setNameU($nameU)
+    public function setLastname($lastname)
     {
-        $this->nameU = $nameU;
+        $this->lastname = $lastname;
 
         return $this;
     }
@@ -96,21 +86,21 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getNameU()
+    public function getLastname()
     {
-        return $this->nameU;
+        return $this->lastname;
     }
 
     /**
      * Set preU.
      *
-     * @param string $preU
+     * @param string $firstname
      *
      * @return User
      */
-    public function setPreU($preU)
+    public function setFirstname($firstname)
     {
-        $this->preU = $preU;
+        $this->firstname = $firstname;
 
         return $this;
     }
@@ -120,58 +110,11 @@ class User extends BaseUser
      *
      * @return string
      */
-    public function getPreU()
+    public function getFirstname()
     {
-        return $this->preU;
+        return $this->firstname;
     }
 
-    /**
-     * Set mdp.
-     *
-     * @param string $mdp
-     *
-     * @return User
-     */
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
-    /**
-     * Get mdp.
-     *
-     * @return string
-     */
-    public function getMdp()
-    {
-        return $this->mdp;
-    }
-
-    /**
-     * Set role.
-     *
-     * @param string $role
-     *
-     * @return User
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role.
-     *
-     * @return string
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
 
     /**
      * Set projetU.

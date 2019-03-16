@@ -10,21 +10,17 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Nameu</th>
-                <td>{{ user.nameU }}</td>
+                <th>Lastname</th>
+                <td>{{ user.lastname }}</td>
             </tr>
             <tr>
-                <th>Preu</th>
-                <td>{{ user.preU }}</td>
+                <th>Firstname</th>
+                <td>{{ user.firstname }}</td>
             </tr>
-            <tr>
-                <th>Mdp</th>
-                <td>{{ user.mdp }}</td>
-            </tr>
-            <tr>
-                <th>Role</th>
-                <td>{{ user.role }}</td>
-            </tr>
+                <th>Roles</th>
+                {%  for role in user.roles %}
+                    <td>{{ dump(role) }}</td>
+                {% endfor %}
         </tbody>
     </table>
 
