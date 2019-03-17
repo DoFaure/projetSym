@@ -1,16 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div id="wrapper">
+        <div id="container">
+            <h1>Project creation</h1>
+            <div class="form-group">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input class="btn btn-success" type="submit" value="Create" />
+                {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('project_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                <ul>
+                    <li>
+                        <a href="{{ path('project_index') }}">Back to the list</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        h1 { font-size: 36px; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+
+
+    </style>
 {% endblock %}

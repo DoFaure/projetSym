@@ -14,9 +14,9 @@
             {% endif %}
             {%  for item in menuConnexion %}
                 {% if is_granted("IS_AUTHENTICATED_ANONYMOUSLY") == true  and not is_granted("IS_AUTHENTICADED_FULLY") == true %}
-                    <button type="button" class="btn btn-dark btn-lg">
-                        <a href="{{ path(item['path']) }}">{{ item['name'] }} </a>
-                    </button>
+
+                        <a class="btn btn-dark btn-lg" href="{{ path(item['path']) }}" role="button">{{ item['name'] }} </a>
+
                 {% endif %}
             {% endfor %}
             {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') == true %}

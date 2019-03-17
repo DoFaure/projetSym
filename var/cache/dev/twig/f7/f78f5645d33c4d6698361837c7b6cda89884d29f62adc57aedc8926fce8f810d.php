@@ -22,6 +22,7 @@ class __TwigTemplate_9cc19c130cfcbcf59b3a830806ee1ef55d0e3b950599c61f555a4746fac
         $this->parent = $this->loadTemplate("base.html.twig", "task/new.html.twig", 1);
         $this->blocks = [
             'body' => [$this, 'block_body'],
+            'stylesheets' => [$this, 'block_stylesheets'],
         ];
     }
 
@@ -57,30 +58,63 @@ class __TwigTemplate_9cc19c130cfcbcf59b3a830806ee1ef55d0e3b950599c61f555a4746fac
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Task creation</h1>
-
-    ";
-        // line 6
+        echo "
+<div id=\"wrapper\">
+    <div id=\"container\">
+        <h1>Task creation</h1>
+            <div class=\"form-group\">
+            ";
+        // line 9
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_start');
         echo "
-        ";
-        // line 7
+                ";
+        // line 10
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(($context["form"] ?? $this->getContext($context, "form")), 'widget');
         echo "
-        <input type=\"submit\" value=\"Create\" />
-    ";
-        // line 9
+
+                <input class=\"btn btn-success\" type=\"submit\" value=\"Create\" />
+            ";
+        // line 13
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_end');
         echo "
 
-    <ul>
-        <li>
-            <a href=\"";
-        // line 13
+            <ul>
+                <li>
+                    <a href=\"";
+        // line 17
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_index");
         echo "\">Back to the list</a>
-        </li>
-    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 25
+    public function block_stylesheets($context, array $blocks = [])
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 26
+        echo "    <style>
+        h1 { font-size: 36px; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+
+
+    </style>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -102,7 +136,7 @@ class __TwigTemplate_9cc19c130cfcbcf59b3a830806ee1ef55d0e3b950599c61f555a4746fac
 
     public function getDebugInfo()
     {
-        return array (  80 => 13,  73 => 9,  68 => 7,  64 => 6,  60 => 4,  51 => 3,  22 => 1,);
+        return array (  111 => 26,  102 => 25,  85 => 17,  78 => 13,  72 => 10,  68 => 9,  61 => 4,  52 => 3,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -118,19 +152,35 @@ class __TwigTemplate_9cc19c130cfcbcf59b3a830806ee1ef55d0e3b950599c61f555a4746fac
         return new Source("{% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Task creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type=\"submit\" value=\"Create\" />
-    {{ form_end(form) }}
+<div id=\"wrapper\">
+    <div id=\"container\">
+        <h1>Task creation</h1>
+            <div class=\"form-group\">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
 
-    <ul>
-        <li>
-            <a href=\"{{ path('task_index') }}\">Back to the list</a>
-        </li>
-    </ul>
+                <input class=\"btn btn-success\" type=\"submit\" value=\"Create\" />
+            {{ form_end(form) }}
+
+            <ul>
+                <li>
+                    <a href=\"{{ path('task_index') }}\">Back to the list</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
-", "task/new.html.twig", "/home/vagrant/code/appliTache/app/Resources/views/task/new.html.twig");
+
+{% block stylesheets %}
+    <style>
+        h1 { font-size: 36px; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+
+
+    </style>
+{% endblock %}", "task/new.html.twig", "/home/vagrant/code/appliTache/app/Resources/views/task/new.html.twig");
     }
 }

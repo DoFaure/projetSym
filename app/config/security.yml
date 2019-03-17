@@ -7,9 +7,9 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_DEV:         ROLE_USER
-        ROLE_CHIEF:       [ ROLE_USER, ROLE_CHIEF]
-        ROLE_ADMIN:       [ ROLE_ADMIN, ROLE_USER, ROLE_CHIEF]
+        ROLE_DEV:         ROLE_DEV
+        ROLE_CHIEF:       [ ROLE_DEV, ROLE_CHIEF]
+        ROLE_ADMIN:       [ ROLE_ADMIN, ROLE_DEV, ROLE_CHIEF]
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded

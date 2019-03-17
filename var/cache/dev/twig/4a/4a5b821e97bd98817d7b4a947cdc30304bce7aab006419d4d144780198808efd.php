@@ -81,14 +81,14 @@ class __TwigTemplate_c4a69f856a97648d6c141c9e870431cb1af62fda66c5def9ad756f0f3c2
             echo "                ";
             if ((($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_ANONYMOUSLY") == true) && ( !$this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICADED_FULLY") == true))) {
                 // line 17
-                echo "                    <button type=\"button\" class=\"btn btn-dark btn-lg\">
-                        <a href=\"";
+                echo "
+                        <a class=\"btn btn-dark btn-lg\" href=\"";
                 // line 18
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath($this->getAttribute($context["item"], "path", [], "array"));
-                echo "\">";
+                echo "\" role=\"button\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["item"], "name", [], "array"), "html", null, true);
                 echo " </a>
-                    </button>
+
                 ";
             }
             // line 21
@@ -198,9 +198,9 @@ class __TwigTemplate_c4a69f856a97648d6c141c9e870431cb1af62fda66c5def9ad756f0f3c2
             {% endif %}
             {%  for item in menuConnexion %}
                 {% if is_granted(\"IS_AUTHENTICATED_ANONYMOUSLY\") == true  and not is_granted(\"IS_AUTHENTICADED_FULLY\") == true %}
-                    <button type=\"button\" class=\"btn btn-dark btn-lg\">
-                        <a href=\"{{ path(item['path']) }}\">{{ item['name'] }} </a>
-                    </button>
+
+                        <a class=\"btn btn-dark btn-lg\" href=\"{{ path(item['path']) }}\" role=\"button\">{{ item['name'] }} </a>
+
                 {% endif %}
             {% endfor %}
             {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') == true %}

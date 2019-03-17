@@ -1,6 +1,29 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <div id="wrapper">
+        <div id="container">
+            <div id="profil">
+                <h1> Profil informations </h1>
+            </div>
+            <div id="list">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ 'profile.show.username'|trans }}: {{ user.username }}</li>
+                    <li class="list-group-item">{{ 'profile.show.email'|trans }}: {{ user.email }}</li>
+                    <li class="list-group-item">{{ 'Firstname'|trans }}: {{ user.firstname }}</li>
+                    <li class="list-group-item">{{ 'Lastname'|trans }}: {{ user.lastname }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+
+{% block stylesheets %}
+    <style>
+        h1 { font-size: 36px; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+        #profil { margin-bottom: 2em; }
+        #profil h1 span { display: block; font-size: 75%; }
+    </style>
+{% endblock %}
