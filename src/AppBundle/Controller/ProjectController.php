@@ -98,13 +98,34 @@ class ProjectController extends Controller
         ));
     }
 
+
+
+    /**
+     * @param Request $request
+     * @param Project $project
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("delete/{id}", name= "delete_project")
+     */
+    public function deleteProject(Request $request, Project $project){
+        if($project === null){
+            return $this->redirectToRoute('task_index');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($project);
+        $em->flush();
+
+        return $this->redirectToRoute('project_index');
+
+    }
+
     /**
      * Deletes a project entity.
      *
      * @Route("/{id}", name="project_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Project $project)
+  /*  public function deleteAction(Request $request, Project $project)
     {
         $form = $this->createDeleteForm($project);
         $form->handleRequest($request);
@@ -116,7 +137,7 @@ class ProjectController extends Controller
         }
 
         return $this->redirectToRoute('project_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a project entity.
@@ -128,7 +149,7 @@ class ProjectController extends Controller
     private function createDeleteForm(Project $project)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('project_delete', array('id' => $project->getId())))
+            ->setAction($this->generateUrl('delete_project', array('id' => $project->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

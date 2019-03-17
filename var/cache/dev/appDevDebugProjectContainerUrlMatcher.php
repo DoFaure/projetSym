@@ -153,9 +153,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_edit']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::editAction',));
             }
 
-            // project_delete
-            if (preg_match('#^/project/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_delete']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::deleteAction',));
+            // delete_project
+            if (0 === strpos($pathinfo, '/projectdelete') && preg_match('#^/projectdelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_project']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::deleteProject',));
             }
 
         }
@@ -228,6 +228,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return array (  '_controller' => 'AppBundle\\Controller\\TaskController::newAction',  '_route' => 'task_new',);
             }
 
+            // task_add
+            if (0 === strpos($pathinfo, '/task/add') && preg_match('#^/task/add/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_add']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::newAddTask',));
+            }
+
             // task_show
             if (preg_match('#^/task/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_show']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::showAction',));
@@ -238,9 +243,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_edit']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::editAction',));
             }
 
-            // task_delete
-            if (preg_match('#^/task/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_delete']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::deleteAction',));
+            // delete_task
+            if (0 === strpos($pathinfo, '/taskdelete') && preg_match('#^/taskdelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_task']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::deleteTask',));
             }
 
         }
@@ -266,14 +271,14 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_edit']), array (  '_controller' => 'AppBundle\\Controller\\UserController::editAction',));
             }
 
-            // user_delete
-            if (preg_match('#^/admin/user/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_delete']), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteAction',));
-            }
-
         }
 
-        elseif (0 === strpos($pathinfo, '/login')) {
+        // delete_user
+        if (0 === strpos($pathinfo, '/admindelete') && preg_match('#^/admindelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_user']), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteTask',));
+        }
+
+        if (0 === strpos($pathinfo, '/login')) {
             // fos_user_security_login
             if ('/login' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.security.controller:loginAction',  '_route' => 'fos_user_security_login',);

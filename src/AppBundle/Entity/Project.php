@@ -69,7 +69,7 @@ class Project
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="idProjetT")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="idProjetT", orphanRemoval = true)
      *
      */
     private $taches;

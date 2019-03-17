@@ -10,6 +10,12 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
+            <tr>
+                <th>Username</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            </tr>
+            <tr>
                 <th>Lastname</th>
                 <td>{{ user.lastname }}</td>
             </tr>
@@ -17,10 +23,25 @@
                 <th>Firstname</th>
                 <td>{{ user.firstname }}</td>
             </tr>
+            <tr>
                 <th>Roles</th>
                 {%  for role in user.roles %}
                     <td>{{ dump(role) }}</td>
                 {% endfor %}
+            </tr>
+            <tr>
+                <th>Task</th>
+                {%  for task in user.tacheU %}
+                    <td>{{ dump(task) }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Project</th>
+                {%  for project in user.projetU %}
+                    <td>{{ dump(project) }}</td>
+                {% endfor %}
+            </tr>
+
         </tbody>
     </table>
 
@@ -32,9 +53,7 @@
             <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
         </li>
         <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('delete_user', {'id': user.id}) }}" class=" btn btn-danger btn-sm"> Delete</a>
         </li>
     </ul>
 {% endblock %}

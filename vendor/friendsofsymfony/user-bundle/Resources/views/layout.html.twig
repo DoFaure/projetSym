@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
+{% extends 'base.html.twig' %}
+{% block body %}
     <body>
         <div>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -30,4 +27,4 @@
             {% endblock fos_user_content %}
         </div>
     </body>
-</html>
+{% endblock %}

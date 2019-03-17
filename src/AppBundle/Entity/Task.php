@@ -236,11 +236,11 @@ class Task
      *
      * @param arrayCollection $idDevT
      *
-     * @return User
+     * @return int
      */
-    public function addIdDevT(User $idDevT)
+    public function setIdDevT(User $idDevT)
     {
-        $this->idDevT[] = $idDevT;
+        $this->idDevT = $idDevT;
 
         return $this;
     }
@@ -248,7 +248,7 @@ class Task
     /**
      * Get idDevT.
      *
-     * @return arrayCollection
+     * @return int
      */
     public function getIdDevT()
     {

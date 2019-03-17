@@ -7,9 +7,9 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_CHIEF:         ROLE_CHIEF
-        ROLE_DEV:         [ ROLE_DEV, ROLE_CHIEF]
-        ROLE_ADMIN:       [ ROLE_ADMIN, ROLE_DEV, ROLE_CHIEF]
+        ROLE_DEV:         ROLE_USER
+        ROLE_CHIEF:       [ ROLE_USER, ROLE_CHIEF]
+        ROLE_ADMIN:       [ ROLE_ADMIN, ROLE_USER, ROLE_CHIEF]
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
@@ -32,11 +32,11 @@ security:
             anonymous:  true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/dev/, role: ROLE_DEV }
+        - { path: ^/task/, role: ROLE_DEV }
         - { path: ^/project/, role: ROLE_CHIEF }
+        - { path: ^/(login$|resetting|register), role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY}
 
 

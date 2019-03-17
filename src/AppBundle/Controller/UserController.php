@@ -98,13 +98,33 @@ class UserController extends Controller
         ));
     }
 
+
+    /**
+     * @param Request $request
+     * @param User $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("delete/{id}", name= "delete_user")
+     */
+    public function deleteTask(Request $request, User $user){
+        if($user === null){
+            return $this->redirectToRoute('task_index');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+
+        return $this->redirectToRoute('user_index');
+
+    }
+
     /**
      * Deletes a user entity.
      *
      * @Route("/user/{id}", name="user_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, User $user)
+  /*  public function deleteAction(Request $request, User $user)
     {
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
@@ -116,7 +136,7 @@ class UserController extends Controller
         }
 
         return $this->redirectToRoute('user_index');
-    }
+    }*/
 
     /**
      * Creates a form to delete a user entity.
@@ -128,7 +148,7 @@ class UserController extends Controller
     private function createDeleteForm(User $user)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+            ->setAction($this->generateUrl('delete_user', array('id' => $user->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

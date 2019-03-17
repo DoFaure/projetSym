@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +14,22 @@ class TaskType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomT')->add('descriptionT')->add('dateDebutT')->add('dateFinT')->add('etatT')->add('idProjetT')->add('idDevT');
-    }/**
+        $builder->add('nomT')
+            ->add('descriptionT')
+            ->add('dateDebutT')
+            ->add('dateFinT')
+            ->add('etatT', ChoiceType::class, [
+                'choices' => [
+                    'In progress' => 'In progress',
+                    'Completed' => 'Completed',
+                    'Abort' =>  'Abort'
+                ]
+            ])
+            ->add('idProjetT')
+            ->add('idDevT');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

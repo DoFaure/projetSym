@@ -37,13 +37,13 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Project", mappedBy="idChefP")
+     * @ORM\OneToMany(targetEntity="Project", mappedBy="idChefP", orphanRemoval = true)
      *
      */
     private $projetU;
 
     /**
-     * @ORM\OneToMany(targetEntity="Task", mappedBy="idDevT")
+     * @ORM\OneToMany(targetEntity="Task", mappedBy="idDevT", orphanRemoval = true)
      *
      */
     private $tacheU;
