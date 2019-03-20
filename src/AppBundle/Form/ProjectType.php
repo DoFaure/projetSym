@@ -16,20 +16,20 @@ class ProjectType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomP' ,TextType::class ,array('label' => 'Name :'))
-            ->add('descriptionP',TextType::class ,array('label' => 'Description :'))
-            ->add('dateDebutP',DateType::class,array('label' => 'Start date :'))
-            ->add('dateFinP',DateType::class ,array('label' => 'End date :'))
+        $builder->add('nomP' ,TextType::class ,array('label' => 'project.name :'))
+            ->add('descriptionP',TextType::class ,array('label' => 'project.description :'))
+            ->add('dateDebutP',DateType::class,array('label' => 'project.start_date :'))
+            ->add('dateFinP',DateType::class ,array('label' => 'project.end_date :'))
             ->add('etatP', ChoiceType::class, [
                 'choices' => [
-                    'In progress' => 'In progress',
-                    'Completed' => 'Completed',
-                    'Abort' =>  'Abort'
+                    'project.progress' => 'project.progress',
+                    'project.completed' => 'project.completed',
+                    'project.abort' =>  'project.abort'
                 ],
-                'label' => 'Statement'
+                'label' => 'label.status'
             ])
-            ->add('nomClient', TextType::class ,array('label' => 'Client name :'))
-            ->add('idChefP', null, array('label' => 'Name of the project manager :'));
+            ->add('nomClient', TextType::class ,array('label' => 'project.client_name :'))
+            ->add('idChefP', null, array('label' => 'project.manager :'));
     }/**
      * {@inheritdoc}
      */

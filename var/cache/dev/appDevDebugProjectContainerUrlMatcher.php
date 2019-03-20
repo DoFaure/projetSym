@@ -108,8 +108,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         // homepage
-        if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        if (preg_match('#^/(?P<_locale>[^/]++)/?$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'homepage']), array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',));
             if ('/' === substr($pathinfo, -1)) {
                 // no-op
             } elseif ('GET' !== $canonicalMethod) {
@@ -122,192 +122,133 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_homepage:
 
-        if (0 === strpos($pathinfo, '/project')) {
-            // project_index
-            if ('/project' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'AppBundle\\Controller\\ProjectController::indexAction',  '_route' => 'project_index',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_project_index;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'project_index'));
-                }
-
-                return $ret;
-            }
-            not_project_index:
-
-            // project_new
-            if ('/project/new' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\ProjectController::newAction',  '_route' => 'project_new',);
+        // project_index
+        if (preg_match('#^/(?P<_locale>[^/]++)/project/?$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'project_index']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::indexAction',));
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_project_index;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'project_index'));
             }
 
-            // project_show
-            if (preg_match('#^/project/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_show']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::showAction',));
-            }
+            return $ret;
+        }
+        not_project_index:
 
-            // project_edit
-            if (preg_match('#^/project/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_edit']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::editAction',));
-            }
-
-            // delete_project
-            if (0 === strpos($pathinfo, '/projectdelete') && preg_match('#^/projectdelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_project']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::deleteProject',));
-            }
-
+        // project_new
+        if (preg_match('#^/(?P<_locale>[^/]++)/project/new$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_new']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::newAction',));
         }
 
-        elseif (0 === strpos($pathinfo, '/profile')) {
-            // fos_user_profile_show
-            if ('/profile' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'fos_user.profile.controller:showAction',  '_route' => 'fos_user_profile_show',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_fos_user_profile_show;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_profile_show'));
-                }
-
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_fos_user_profile_show;
-                }
-
-                return $ret;
-            }
-            not_fos_user_profile_show:
-
-            // fos_user_profile_edit
-            if ('/profile/edit' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.profile.controller:editAction',  '_route' => 'fos_user_profile_edit',);
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_profile_edit;
-                }
-
-                return $ret;
-            }
-            not_fos_user_profile_edit:
-
-            // fos_user_change_password
-            if ('/profile/change-password' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.change_password.controller:changePasswordAction',  '_route' => 'fos_user_change_password',);
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_change_password;
-                }
-
-                return $ret;
-            }
-            not_fos_user_change_password:
-
+        // project_show
+        if (preg_match('#^/(?P<_locale>[^/]++)/project/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_show']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::showAction',));
         }
 
-        elseif (0 === strpos($pathinfo, '/task')) {
-            // task_index
-            if ('/task' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'AppBundle\\Controller\\TaskController::indexAction',  '_route' => 'task_index',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_task_index;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'task_index'));
-                }
-
-                return $ret;
-            }
-            not_task_index:
-
-            // task_new
-            if ('/task/new' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\TaskController::newAction',  '_route' => 'task_new',);
-            }
-
-            // task_add
-            if (0 === strpos($pathinfo, '/task/add') && preg_match('#^/task/add/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_add']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::newAddTask',));
-            }
-
-            // task_show
-            if (preg_match('#^/task/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_show']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::showAction',));
-            }
-
-            // task_edit
-            if (preg_match('#^/task/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_edit']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::editAction',));
-            }
-
-            // delete_task
-            if (0 === strpos($pathinfo, '/taskdelete') && preg_match('#^/taskdelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_task']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::deleteTask',));
-            }
-
+        // project_edit
+        if (preg_match('#^/(?P<_locale>[^/]++)/project/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_edit']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::editAction',));
         }
 
-        elseif (0 === strpos($pathinfo, '/admin/user')) {
-            // user_index
-            if ('/admin/user/index' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\UserController::indexAction',  '_route' => 'user_index',);
+        // delete_project
+        if (preg_match('#^/(?P<_locale>[^/]++)/projectdelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_project']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::deleteProject',));
+        }
+
+        // task_index
+        if (preg_match('#^/(?P<_locale>[^/]++)/task/?$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'task_index']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::indexAction',));
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_task_index;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'task_index'));
             }
 
-            // user_new
-            if ('/admin/user/new' === $pathinfo) {
-                return array (  '_controller' => 'AppBundle\\Controller\\UserController::newAction',  '_route' => 'user_new',);
-            }
+            return $ret;
+        }
+        not_task_index:
 
-            // user_show
-            if (preg_match('#^/admin/user/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_show']), array (  '_controller' => 'AppBundle\\Controller\\UserController::showAction',));
-            }
+        // task_new
+        if (preg_match('#^/(?P<_locale>[^/]++)/task/new$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_new']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::newAction',));
+        }
 
-            // user_edit
-            if (preg_match('#^/admin/user/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_edit']), array (  '_controller' => 'AppBundle\\Controller\\UserController::editAction',));
-            }
+        // task_add
+        if (preg_match('#^/(?P<_locale>[^/]++)/task/add/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_add']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::newAddTask',));
+        }
 
+        // task_show
+        if (preg_match('#^/(?P<_locale>[^/]++)/task/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_show']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::showAction',));
+        }
+
+        // task_edit
+        if (preg_match('#^/(?P<_locale>[^/]++)/task/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'task_edit']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::editAction',));
+        }
+
+        // delete_task
+        if (preg_match('#^/(?P<_locale>[^/]++)/taskdelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_task']), array (  '_controller' => 'AppBundle\\Controller\\TaskController::deleteTask',));
+        }
+
+        // user_index
+        if (preg_match('#^/(?P<_locale>[^/]++)/admin/user/index$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_index']), array (  '_controller' => 'AppBundle\\Controller\\UserController::indexAction',));
+        }
+
+        // user_new
+        if (preg_match('#^/(?P<_locale>[^/]++)/admin/user/new$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_new']), array (  '_controller' => 'AppBundle\\Controller\\UserController::newAction',));
+        }
+
+        // user_show
+        if (preg_match('#^/(?P<_locale>[^/]++)/admin/user/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_show']), array (  '_controller' => 'AppBundle\\Controller\\UserController::showAction',));
+        }
+
+        // user_edit
+        if (preg_match('#^/(?P<_locale>[^/]++)/admin/user/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_edit']), array (  '_controller' => 'AppBundle\\Controller\\UserController::editAction',));
         }
 
         // delete_user
-        if (0 === strpos($pathinfo, '/admindelete') && preg_match('#^/admindelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+        if (preg_match('#^/(?P<_locale>[^/]++)/admindelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_user']), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteTask',));
         }
 
-        if (0 === strpos($pathinfo, '/login')) {
-            // fos_user_security_login
-            if ('/login' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.security.controller:loginAction',  '_route' => 'fos_user_security_login',);
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_security_login;
-                }
-
-                return $ret;
+        // fos_user_security_login
+        if (preg_match('#^/(?P<_locale>[^/]++)/login$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_security_login']), array (  '_controller' => 'fos_user.security.controller:loginAction',));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_fos_user_security_login;
             }
-            not_fos_user_security_login:
 
-            // fos_user_security_check
-            if ('/login_check' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.security.controller:checkAction',  '_route' => 'fos_user_security_check',);
-                if (!in_array($requestMethod, ['POST'])) {
-                    $allow = array_merge($allow, ['POST']);
-                    goto not_fos_user_security_check;
-                }
-
-                return $ret;
-            }
-            not_fos_user_security_check:
-
+            return $ret;
         }
+        not_fos_user_security_login:
+
+        // fos_user_security_check
+        if (preg_match('#^/(?P<_locale>[^/]++)/login_check$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_security_check']), array (  '_controller' => 'fos_user.security.controller:checkAction',));
+            if (!in_array($requestMethod, ['POST'])) {
+                $allow = array_merge($allow, ['POST']);
+                goto not_fos_user_security_check;
+            }
+
+            return $ret;
+        }
+        not_fos_user_security_check:
 
         // fos_user_security_logout
-        if ('/logout' === $pathinfo) {
-            $ret = array (  '_controller' => 'fos_user.security.controller:logoutAction',  '_route' => 'fos_user_security_logout',);
+        if (preg_match('#^/(?P<_locale>[^/]++)/logout$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_security_logout']), array (  '_controller' => 'fos_user.security.controller:logoutAction',));
             if (!in_array($canonicalMethod, ['GET', 'POST'])) {
                 $allow = array_merge($allow, ['GET', 'POST']);
                 goto not_fos_user_security_logout;
@@ -317,118 +258,153 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_fos_user_security_logout:
 
-        if (0 === strpos($pathinfo, '/register')) {
-            // fos_user_registration_register
-            if ('/register' === $trimmedPathinfo) {
-                $ret = array (  '_controller' => 'fos_user.registration.controller:registerAction',  '_route' => 'fos_user_registration_register',);
-                if ('/' === substr($pathinfo, -1)) {
-                    // no-op
-                } elseif ('GET' !== $canonicalMethod) {
-                    goto not_fos_user_registration_register;
-                } else {
-                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_registration_register'));
-                }
-
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_registration_register;
-                }
-
-                return $ret;
-            }
-            not_fos_user_registration_register:
-
-            // fos_user_registration_check_email
-            if ('/register/check-email' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.registration.controller:checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_fos_user_registration_check_email;
-                }
-
-                return $ret;
-            }
-            not_fos_user_registration_check_email:
-
-            if (0 === strpos($pathinfo, '/register/confirm')) {
-                // fos_user_registration_confirm
-                if (preg_match('#^/register/confirm/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_confirm']), array (  '_controller' => 'fos_user.registration.controller:confirmAction',));
-                    if (!in_array($canonicalMethod, ['GET'])) {
-                        $allow = array_merge($allow, ['GET']);
-                        goto not_fos_user_registration_confirm;
-                    }
-
-                    return $ret;
-                }
-                not_fos_user_registration_confirm:
-
-                // fos_user_registration_confirmed
-                if ('/register/confirmed' === $pathinfo) {
-                    $ret = array (  '_controller' => 'fos_user.registration.controller:confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
-                    if (!in_array($canonicalMethod, ['GET'])) {
-                        $allow = array_merge($allow, ['GET']);
-                        goto not_fos_user_registration_confirmed;
-                    }
-
-                    return $ret;
-                }
-                not_fos_user_registration_confirmed:
-
+        // fos_user_profile_show
+        if (preg_match('#^/(?P<_locale>[^/]++)/profile/?$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_profile_show']), array (  '_controller' => 'fos_user.profile.controller:showAction',));
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_fos_user_profile_show;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_profile_show'));
             }
 
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_fos_user_profile_show;
+            }
+
+            return $ret;
         }
+        not_fos_user_profile_show:
 
-        elseif (0 === strpos($pathinfo, '/resetting')) {
-            // fos_user_resetting_request
-            if ('/resetting/request' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.resetting.controller:requestAction',  '_route' => 'fos_user_resetting_request',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_fos_user_resetting_request;
-                }
-
-                return $ret;
+        // fos_user_profile_edit
+        if (preg_match('#^/(?P<_locale>[^/]++)/profile/edit$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_profile_edit']), array (  '_controller' => 'fos_user.profile.controller:editAction',));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_fos_user_profile_edit;
             }
-            not_fos_user_resetting_request:
 
-            // fos_user_resetting_reset
-            if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_reset']), array (  '_controller' => 'fos_user.resetting.controller:resetAction',));
-                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
-                    $allow = array_merge($allow, ['GET', 'POST']);
-                    goto not_fos_user_resetting_reset;
-                }
-
-                return $ret;
-            }
-            not_fos_user_resetting_reset:
-
-            // fos_user_resetting_send_email
-            if ('/resetting/send-email' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.resetting.controller:sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
-                if (!in_array($requestMethod, ['POST'])) {
-                    $allow = array_merge($allow, ['POST']);
-                    goto not_fos_user_resetting_send_email;
-                }
-
-                return $ret;
-            }
-            not_fos_user_resetting_send_email:
-
-            // fos_user_resetting_check_email
-            if ('/resetting/check-email' === $pathinfo) {
-                $ret = array (  '_controller' => 'fos_user.resetting.controller:checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
-                if (!in_array($canonicalMethod, ['GET'])) {
-                    $allow = array_merge($allow, ['GET']);
-                    goto not_fos_user_resetting_check_email;
-                }
-
-                return $ret;
-            }
-            not_fos_user_resetting_check_email:
-
+            return $ret;
         }
+        not_fos_user_profile_edit:
+
+        // fos_user_registration_register
+        if (preg_match('#^/(?P<_locale>[^/]++)/register/?$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_register']), array (  '_controller' => 'fos_user.registration.controller:registerAction',));
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_fos_user_registration_register;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_registration_register'));
+            }
+
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_fos_user_registration_register;
+            }
+
+            return $ret;
+        }
+        not_fos_user_registration_register:
+
+        // fos_user_registration_check_email
+        if (preg_match('#^/(?P<_locale>[^/]++)/register/check\\-email$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_check_email']), array (  '_controller' => 'fos_user.registration.controller:checkEmailAction',));
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_fos_user_registration_check_email;
+            }
+
+            return $ret;
+        }
+        not_fos_user_registration_check_email:
+
+        // fos_user_registration_confirm
+        if (preg_match('#^/(?P<_locale>[^/]++)/register/confirm/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_confirm']), array (  '_controller' => 'fos_user.registration.controller:confirmAction',));
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_fos_user_registration_confirm;
+            }
+
+            return $ret;
+        }
+        not_fos_user_registration_confirm:
+
+        // fos_user_registration_confirmed
+        if (preg_match('#^/(?P<_locale>[^/]++)/register/confirmed$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_confirmed']), array (  '_controller' => 'fos_user.registration.controller:confirmedAction',));
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_fos_user_registration_confirmed;
+            }
+
+            return $ret;
+        }
+        not_fos_user_registration_confirmed:
+
+        // fos_user_resetting_request
+        if (preg_match('#^/(?P<_locale>[^/]++)/resetting/request$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_request']), array (  '_controller' => 'fos_user.resetting.controller:requestAction',));
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_fos_user_resetting_request;
+            }
+
+            return $ret;
+        }
+        not_fos_user_resetting_request:
+
+        // fos_user_resetting_send_email
+        if (preg_match('#^/(?P<_locale>[^/]++)/resetting/send\\-email$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_send_email']), array (  '_controller' => 'fos_user.resetting.controller:sendEmailAction',));
+            if (!in_array($requestMethod, ['POST'])) {
+                $allow = array_merge($allow, ['POST']);
+                goto not_fos_user_resetting_send_email;
+            }
+
+            return $ret;
+        }
+        not_fos_user_resetting_send_email:
+
+        // fos_user_resetting_check_email
+        if (preg_match('#^/(?P<_locale>[^/]++)/resetting/check\\-email$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_check_email']), array (  '_controller' => 'fos_user.resetting.controller:checkEmailAction',));
+            if (!in_array($canonicalMethod, ['GET'])) {
+                $allow = array_merge($allow, ['GET']);
+                goto not_fos_user_resetting_check_email;
+            }
+
+            return $ret;
+        }
+        not_fos_user_resetting_check_email:
+
+        // fos_user_resetting_reset
+        if (preg_match('#^/(?P<_locale>[^/]++)/resetting/reset/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_reset']), array (  '_controller' => 'fos_user.resetting.controller:resetAction',));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_fos_user_resetting_reset;
+            }
+
+            return $ret;
+        }
+        not_fos_user_resetting_reset:
+
+        // fos_user_change_password
+        if (preg_match('#^/(?P<_locale>[^/]++)/profile/change\\-password$#sD', $pathinfo, $matches)) {
+            $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_change_password']), array (  '_controller' => 'fos_user.change_password.controller:changePasswordAction',));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
+                goto not_fos_user_change_password;
+            }
+
+            return $ret;
+        }
+        not_fos_user_change_password:
 
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();

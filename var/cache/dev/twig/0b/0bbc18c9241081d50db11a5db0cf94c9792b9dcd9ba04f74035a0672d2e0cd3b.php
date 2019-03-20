@@ -57,7 +57,7 @@ class __TwigTemplate_a17461b4825b599c32fe5fb33f953c8b9586eec068634f0646272c811e4
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "    <h1>Project edit</h1>
+        echo "    <h1 id=\"project\">Project edit</h1>
 
     ";
         // line 6
@@ -129,7 +129,7 @@ class __TwigTemplate_a17461b4825b599c32fe5fb33f953c8b9586eec068634f0646272c811e4
         return new Source("{% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project edit</h1>
+    <h1 id=\"project\">Project edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -147,6 +147,8 @@ class __TwigTemplate_a17461b4825b599c32fe5fb33f953c8b9586eec068634f0646272c811e4
         </li>
     </ul>
 {% endblock %}
+
+
 ", "project/edit.html.twig", "/home/vagrant/code/appliTache/app/Resources/views/project/edit.html.twig");
     }
 }

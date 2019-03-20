@@ -4,24 +4,19 @@
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
-                <h1><span>Welcome to the Task Management Application</span></h1>
+                <h1><span>{{ 'Welcome to the Task Management Application'|trans }}</span></h1>
             </div>
-            {% if is_granted("IS_AUTHENTICATED_ANONYMOUSLY") and not is_granted("IS_AUTHENTICADED_FULLY") %}
+            {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            {% else %}
                 {% set menuConnexion = [
-                    { 'path' : 'fos_user_registration_register', 'name' : 'Register'  },
-                    { 'path' : 'fos_user_security_login', 'name' : 'Login' }
+                    { 'path' : 'fos_user_registration_register', 'name' : 'Register'|trans  },
+                    { 'path' : 'fos_user_security_login', 'name' : 'Login'|trans }
                     ] %}
-            {% endif %}
-            {%  for item in menuConnexion %}
-                {% if is_granted("IS_AUTHENTICATED_ANONYMOUSLY") == true  and not is_granted("IS_AUTHENTICADED_FULLY") == true %}
 
+                {%  for item in menuConnexion %}
                         <a class="btn btn-dark btn-lg" href="{{ path(item['path']) }}" role="button">{{ item['name'] }} </a>
-
-                {% endif %}
-            {% endfor %}
-            {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') == true %}
-                test granted
-                {{ dump(is_granted('IS_AUTHENTICATED_ANONYMOUSLY')) }}
+                {% endfor %}
             {% endif %}
 
         </div>

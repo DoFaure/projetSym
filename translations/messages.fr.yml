@@ -1,0 +1,74 @@
+Home: Acceuil
+Project: Projet
+Show: Afficher
+Add: Ajouter
+Task: Tâche
+Stats: Stats
+User: Utilisateur
+Profile: Profil
+'Change Password': 'Changer le mot de passe'
+Logout: Deconnexion
+'Change password': 'Changer le mot de passe'
+'Welcome to the Task Management Application': 'Bienvenue sur l''application de gestion de tâche'
+Register: Enregistrement
+Login: Connexion
+'In progress project': 'Projet en cours'
+'In progress': 'En cours'
+Name: Nom
+'Start Date': 'Date de debut'
+'End Date': 'Date de fin'
+'Client name': 'Nom du client'
+Developer: Developpeur
+Tasks: Tâches
+Actions: Actions
+Edit: Editer
+'Completed project': 'Projet terminé'
+Completed: Terminé
+'Aborted project': 'Projet en suspend'
+Abort: Suspendu
+'Create a new project': 'Creer un nouveau projet'
+'Project manager': 'Chef de projet'
+Delete: Supprimer
+'Linked tasks': 'Tâches liées'
+Firstname: Prenom
+'Back to the list': 'Revenir à la liste'
+'In progress tasks': 'Tâches en cours'
+'Completed tasks': 'Tâches terminées'
+'Abort tasks': 'Tâches en suspend'
+'Create a new task': 'Creer une nouvelle tâche'
+toto: toto
+'Linked project': 'Projet lié'
+'User list': 'Liste des utilisateurs'
+Administrator: Administrateur
+Username: 'Nom d''utilisateur'
+'First name': 'Prenom '
+'Last name': 'Nom'
+Projects: Projets
+OTHER: AUTRE
+'French': 'Français'
+'English': 'Anglais'
+'Create a new user': 'Creer un nouvel utilisateur'
+'Linked projects': 'Projets liés'
+label.name: 'Nom'
+label.description: 'Description'
+label.start_date: 'Date de debut'
+label.end_date: 'Date de fin'
+label.status : 'Statut'
+label.project : 'Projet'
+label.developer : 'Developpeur'
+label.lastname : 'Nom'
+label.firstname : 'Prenom'
+label.client_name : 'Nom du client'
+label.manager : 'Nom du chef de projet'
+label.abort : 'En suspend'
+label.completed : 'Termniné'
+label.progress : 'En cours'
+project.name: 'Nom'
+project.description: 'Description'
+project.start_date: 'Date de debut'
+project.end_date: 'Date de fin'
+project.client_name : 'Nom du client'
+project.manager : 'Nom du chef de projet'
+project.abort : 'En suspend'
+project.completed : 'Termniné'
+project.progress : 'En cours'

@@ -73,18 +73,19 @@ class TaskController extends Controller
         $form = $this->createForm('AppBundle\Form\TaskType', $task, ['action' => $this->generateUrl('task_add',['id'=> $project->getId()])]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            return $this->render('task/new.html.twig', [
+                'form' => $form->createView(),
+                'task' => $task
+            ]);
+        }
+            $task->setIdProjetT($project);
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
 
             return $this->redirectToRoute('project_show', array('id' => $project->getId()));
-        }
 
-        return $this->render('task/new.html.twig', array(
-            'task' => $task,
-            'form' => $form->createView(),
-        ));
     }
 
 
@@ -185,4 +186,8 @@ class TaskController extends Controller
             ->getForm()
         ;
     }
+
+
+
+
 }

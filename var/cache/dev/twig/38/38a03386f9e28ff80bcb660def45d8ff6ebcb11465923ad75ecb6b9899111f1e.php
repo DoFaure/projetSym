@@ -21,6 +21,7 @@ class __TwigTemplate_7337e6207e4e0f47eab059e0ccf9ffb96e2157f4a3e8d6d48fb28162161
         $this->parent = false;
 
         $this->blocks = [
+            'stylesheets' => [$this, 'block_stylesheets'],
         ];
     }
 
@@ -34,30 +35,71 @@ class __TwigTemplate_7337e6207e4e0f47eab059e0ccf9ffb96e2157f4a3e8d6d48fb28162161
 
         // line 2
         echo "
-";
-        // line 3
+
+<div id=\"wrapper\">
+    <div id=\"container\">
+        <h2 class=\"text-center text-align\"> ";
+        // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Register", [], "FOSUserBundle"), "html", null, true);
+        echo "</h2>
+
+            <div class=\"col-lg-12\">
+
+
+
+                ";
+        // line 12
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_start', ["method" => "post", "action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_registration_register"), "attr" => ["class" => "fos_user_registration_register"]]);
         echo "
-    ";
-        // line 4
+                    ";
+        // line 13
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(($context["form"] ?? $this->getContext($context, "form")), 'widget');
         echo "
-    <div>
-        <input type=\"submit\" value=\"";
-        // line 6
+                    <div>
+                        <input type=\"submit\" value=\"";
+        // line 15
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("registration.submit", [], "FOSUserBundle"), "html", null, true);
         echo "\" />
-    </div>
-";
-        // line 8
+                    </div>
+                ";
+        // line 17
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_end');
         echo "
+            </div>
+    </div>
+</div>
+
 ";
+        // line 22
+        $this->displayBlock('stylesheets', $context, $blocks);
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
 
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+    }
+
+    public function block_stylesheets($context, array $blocks = [])
+    {
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
+
+        // line 23
+        echo "    <style>
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+
+    </style>
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
 
     }
 
@@ -73,7 +115,7 @@ class __TwigTemplate_7337e6207e4e0f47eab059e0ccf9ffb96e2157f4a3e8d6d48fb28162161
 
     public function getDebugInfo()
     {
-        return array (  53 => 8,  48 => 6,  43 => 4,  39 => 3,  36 => 2,);
+        return array (  92 => 23,  74 => 22,  66 => 17,  61 => 15,  56 => 13,  52 => 12,  43 => 6,  37 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -88,12 +130,31 @@ class __TwigTemplate_7337e6207e4e0f47eab059e0ccf9ffb96e2157f4a3e8d6d48fb28162161
     {
         return new Source("{% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type=\"submit\" value=\"{{ 'registration.submit'|trans }}\" />
+
+<div id=\"wrapper\">
+    <div id=\"container\">
+        <h2 class=\"text-center text-align\"> {{ 'Register'|trans }}</h2>
+
+            <div class=\"col-lg-12\">
+
+
+
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    {{ form_widget(form) }}
+                    <div>
+                        <input type=\"submit\" value=\"{{ 'registration.submit'|trans }}\" />
+                    </div>
+                {{ form_end(form) }}
+            </div>
     </div>
-{{ form_end(form) }}
-", "@FOSUser/Registration/register_content.html.twig", "/home/vagrant/code/appliTache/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register_content.html.twig");
+</div>
+
+{% block stylesheets %}
+    <style>
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+
+    </style>
+{% endblock %}", "@FOSUser/Registration/register_content.html.twig", "/home/vagrant/code/appliTache/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register_content.html.twig");
     }
 }

@@ -1,59 +1,135 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>User</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-            <tr>
-                <th>Username</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ user.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ user.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                {%  for role in user.roles %}
-                    <td>{{ dump(role) }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th>Task</th>
-                {%  for task in user.tacheU %}
-                    <td>{{ dump(task) }}</td>
-                {% endfor %}
-            </tr>
-            <tr>
-                <th>Project</th>
-                {%  for project in user.projetU %}
-                    <td>{{ dump(project) }}</td>
-                {% endfor %}
-            </tr>
+    <h3 class="text-center">{{ 'User'|trans }} n° {{ user.id }}</h3>
+    <div class="container">
 
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
-            <a href="{{ path('delete_user', {'id': user.id}) }}" class=" btn btn-danger btn-sm"> Delete</a>
-        </li>
-    </ul>
+        <h2>{{ 'User'|trans }} {{ user.username }}</h2>
+        <div id="ligne" class="row">
+            <div class="col">
+                <p><b>{{ 'Email' }}</b></p>
+                <p>{{ user.email }}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Firstname'|trans }}</b></p>
+                <p>{{ user.firstname }}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Lastname'|trans }}</b></p>
+                <p>{{ user.lastname }}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Actions'|trans }}</b></p>
+                <p>
+                    <ul>
+                            <a href="{{ path('user_edit', { 'id': user.id }) }} " class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+                            <a href="{{ path('delete_user', {'id': user.id}) }}" class=" btn btn-danger btn-sm"> {{ 'Delete'|trans }}</a>
+                    </ul>
+                </p>
+            </div>
+
+        </div>
+
+        <h2>{{ 'Linked projects'|trans }}</h2>
+        {% for project in user.projetU %}
+        <div id="ligne" class="row">
+            <div class="col">
+                <p><b>Id</b></p>
+                <p>{{ project.id }}</a></p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Name'|trans }}</b></p>
+                <p>{{ project.nomP }}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Description' }}</b></p>
+                <p>{{ project.descriptionP }}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Start Date'|trans }}</b></p>
+                <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'End Date'|trans }}</b></p>
+                <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Client name'|trans }}</b></p>
+                <p>{{ project.nomClient }}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Developer'|trans }}</b></p>
+                <p>{{ project.idChefP }}</p>
+            </div>
+            <div class="col">
+                <p><b>{{ 'Actions'|trans }}</b></p>
+                <p>
+                <ul>
+
+                    <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+
+                </ul>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <h2>{{ 'Linked tasks'|trans }}</h2>
+
+        {% for task in user.tacheU %}
+            <div id="ligne" class="row">
+                <div class="col">
+                    <p><b>Id</b></p>
+                    <p>{{ task.id }}</a></p>
+                </div>
+                <div class="col">
+                    <p><b>{{ 'Name'|trans }}</b></p>
+                    <p>{{ task.nomT }}</p>
+                </div>
+                <div class="col">
+                    <p><b>{{ 'Description' }}</b></p>
+                    <p>{{ task.descriptionT }}</p>
+                </div>
+                <div class="col">
+                    <p><b>{{ 'Start Date'|trans }}</b></p>
+                    <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                </div>
+                <div class="col">
+                    <p><b>{{ 'End Date'|trans }}</b></p>
+                    <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                </div>
+                <div class="col">
+                    <p><b>{{ 'Developer'|trans }}</b></p>
+                    <p>{{ task.idDevT }}</p>
+                </div>
+                <div class="col">
+                    <p><b>{{ 'Project'|trans }}</b></p>
+                    <p>{{ task.idProjetT }}</p>
+                </div>
+                <div class="col">
+                    <p><b>{{ 'Actions'|trans }}</b></p>
+                    <p>
+                    <ul>
+
+                        <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    <div class="col-lg-12 text-center">
+        <p> <a href="{{ path('user_index') }}" class="btn btn-lg btn-info ">{{ 'Back to the list'|trans }}</a></p>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        #ligne { background-color: #868686 }
+
+    </style>
 {% endblock %}

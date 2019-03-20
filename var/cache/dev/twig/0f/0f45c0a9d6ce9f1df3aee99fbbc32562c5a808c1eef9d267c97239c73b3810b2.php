@@ -71,10 +71,18 @@ class __TwigTemplate_ffe6ddf15de4f10249dce94d2d1305d3c8c96ca33ccaa602676827aac36
             </div>
         </div>
     </div>
+    <div class=\"col-lg-12 text-center\">
+        <p>   <a class=\"btn btn-lg btn-info\" href=\"";
+        // line 20
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
+        echo "\">";
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Change password", [], "FOSUserBundle"), "html", null, true);
+        echo "</a></p>
+    </div>
 </div>
 
 ";
-        // line 21
+        // line 24
         $this->displayBlock('stylesheets', $context, $blocks);
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -92,7 +100,7 @@ class __TwigTemplate_ffe6ddf15de4f10249dce94d2d1305d3c8c96ca33ccaa602676827aac36
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 22
+        // line 25
         echo "    <style>
         h1 { font-size: 36px; }
         #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
@@ -121,7 +129,7 @@ class __TwigTemplate_ffe6ddf15de4f10249dce94d2d1305d3c8c96ca33ccaa602676827aac36
 
     public function getDebugInfo()
     {
-        return array (  96 => 22,  78 => 21,  66 => 14,  60 => 13,  54 => 12,  48 => 11,  37 => 2,);
+        return array (  104 => 25,  86 => 24,  77 => 20,  66 => 14,  60 => 13,  54 => 12,  48 => 11,  37 => 2,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -151,6 +159,9 @@ class __TwigTemplate_ffe6ddf15de4f10249dce94d2d1305d3c8c96ca33ccaa602676827aac36
                 </ul>
             </div>
         </div>
+    </div>
+    <div class=\"col-lg-12 text-center\">
+        <p>   <a class=\"btn btn-lg btn-info\" href=\"{{ path('fos_user_change_password') }}\">{{ 'Change password'|trans }}</a></p>
     </div>
 </div>
 
