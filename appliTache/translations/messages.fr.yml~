@@ -1,0 +1,49 @@
+Home: __Acceuil
+Project: __Projet
+Show: __Afficher
+Add: __Ajouter
+Task: __Tâche
+Stats: __Stats
+User: __Utilisateur
+Profile: __Profile
+'Change Password': '__Changer le mot de passe'
+Logout: __Deconnexion
+'Change password': '__Changer le mot de passe'
+'Welcome to the Task Management Application': '__Bienvenue sur l''application de gestion de tâche'
+Register: __Enregistrement
+Login: __Connexion
+'In progress project': '__Projet en cours'
+'In progress': '__En cours'
+Name: __Nom
+'Start Date': '__Date de debut'
+'End Date': '__Date de fin'
+'Client name': '__Nom du client'
+Developer: __Developpeur
+Tasks: __Tâches
+Actions: __Actions
+Edit: __Editer
+'Completed project': '__Projet terminé'
+Completed: __Terminé
+'Aborted project': '__Projet en suspend'
+Abort: __Suspendu
+'Create a new project': '__Creer un nouveau projet'
+'Project manager': '__Chef de projet'
+Delete: __Supprimer
+'Linked tasks': '__Tâches liées'
+Firstname: __Prenom
+'Back to the list': '__Revenir à la liste'
+'In progress tasks': '__Tâches en cours'
+'Completed tasks': '__Tâches terminées'
+'Abort tasks': '__Tâches en suspend'
+'Create a new task': '__Creer une nouvelle tâche'
+toto: __toto
+'Linked project': '__Projet lié'
+'User list': '__Liste des utilisateurs'
+Administrator: __Administrateur
+Username: __Nom d'utilisateur
+'First name': '__Prenom '
+'Last name': '__Nom'
+Projects: __Projets
+OTHER: __AUTRE
+'Create a new user': '__Creer un nouvel utilisateur'
+'Linked projects': '__Projets liés'

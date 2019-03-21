@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3 class="text-center">{{ 'Project'|trans }} n° {{ project.id }}</h3>
+    <div class="container">
+
+        <div class="card bg-light mb-3">
+
+            <div class="card-header"><h5><b> {{ project.nomP }}</b></h5></div>
+            <div class="card-body">
+
+                <div id="ligne" class="row">
+                    <div class="col">
+                        <p><b>{{ 'Description' }}</b></p>
+                        <p>{{ project.descriptionP }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                        <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'End Date'|trans }}</b></p>
+                        <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Project manager'|trans }}</b></p>
+                        <p>{{ project.idChefP }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Actions'|trans }}</b></p>
+                        {% if is_granted("ROLE_ADMIN") or  is_granted("ROLE_CHIEF")   %}
+
+                        <p>
+                            <ul>
+                                <p> <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a></p>
+                                <p> <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a></p>
+                            </ul>
+                        </p>
+                        {% endif %}
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+
+        <h2>{{ 'Linked tasks'|trans }}</h2>
+
+        {% for task in project.taches %}
+        <div class="card bg-light mb-3">
+
+            <div class="card-header"><h5><b>{{ task.nomT }}</b></h5></div>
+            <div class="card-body">
+                <div id="ligne" class="row">
+                    <div class="col">
+                        <p><b>Id</b></p>
+                        <p>{{ task.id }}</a></p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Description' }}</b></p>
+                        <p>{{ task.descriptionT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'End Date'|trans }}</b></p>
+                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Developer'|trans }}</b></p>
+                        <p>{{ task.idDevT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Actions'|trans }}</b></p>
+                        <p>
+                        <ul>
+
+                            <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+             </div>
+        </div>
+        {% endfor %}
+
+
+        <h2>{{ 'Project manager'|trans }}</h2>
+        <div class="card bg-light mb-3">
+            <div class="card-header">{{ project.idChefP.firstname }} {{ project.idChefP.lastname }}</div>
+            <div class="card-body">
+
+                <div id="ligne" class="row">
+                    <div class="col">
+                        <p><b>Id</b></p>
+                        <p>{{ project.idChefP.id }}</a></p>
+                    </div>
+                    <div class="col">
+                        <p><b>email</b></p>
+                        <p>{{ project.idChefP.email }}</a></p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Actions'|trans }}</b></p>
+                        <ul>
+                            <a href="{{ path('project_show', { 'id': project.idChefP.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-12 text-center">
+                <p> <a href="{{ path('user_index') }}" class="btn btn-lg btn-info ">{{ 'Back to the list'|trans }}</a></p>
+                <p> <a href="{{ path('task_add', {'id': project.id})  }}" class="btn btn-lg btn-primary">{{ 'Add task'|trans }}</a> </p>
+            </div>
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

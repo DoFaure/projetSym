@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">{{ 'Tasks list'|trans }}</h1>
+
+    <div class="container">
+        <h2>{{ 'In progress tasks'|trans }}</h2>
+        {% for task in tasks if task.etatT == 'label.progress' %}
+        <div class="card bg-light mb-3">
+            <div class="card-header">{{ task.nomT }}</div>
+            <div class="card-body">
+                <div id="ligne" class="row">
+                    <div class="col">
+                        <p><b>Id</b></p>
+                        <p><a>{{ task.id }}</a></p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Description' }}</b></p>
+                        <p>{{ task.descriptionT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'End Date'|trans }}</b></p>
+                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Project'|trans }}</b></p>
+                        <p>{{ task.idProjetT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Developer'|trans }}</b></p>
+                        <p>{{ task.idDevT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Actions'|trans }}</b></p>
+                        <p>
+                            <ul>
+                                    <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                                    <a href="{{ path('task_edit', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <h2>{{ 'Completed tasks'|trans }}</h2>
+        {% for task in tasks if task.etatT == 'label.completed' %}
+        <div class="card bg-success mb-3">
+            <div class="card-header">{{ task.nomT }}</div>
+            <div class="card-body">
+                <div id="ligne" class="row">
+                    <div class="col">
+                        <p><b>Id</b></p>
+                        <p><a>{{ task.id }}</a></p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Name'|trans }}</b></p>
+                        <p>{{ task.nomT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Description' }}</b></p>
+                        <p>{{ task.descriptionT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'End Date'|trans }}</b></p>
+                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Project'|trans }}</b></p>
+                        <p>{{ task.idProjetT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Developer'|trans }}</b></p>
+                        <p>{{ task.idDevT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Actions'|trans }}</b></p>
+                        <p>
+                        <ul>
+                                <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                                <a href="{{ path('task_edit', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <h2>{{ 'Abort tasks'|trans }}</h2>
+        {% for task in tasks if task.etatT == 'label.abort' %}
+        <div class="card bg-dark text-white mb-3">
+            <div class="card-header">{{ task.nomT }}</div>
+            <div class="card-body">
+                <div id="ligne" class="row">
+                    <div class="col">
+                        <p><b>Id</b></p>
+                        <p><a>{{ task.id }}</a></p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Name'|trans }}</b></p>
+                        <p>{{ task.nomT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Description' }}</b></p>
+                        <p>{{ task.descriptionT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'End Date'|trans }}</b></p>
+                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Project'|trans }}</b></p>
+                        <p>{{ task.idProjetT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Developer'|trans }}</b></p>
+                        <p>{{ task.idDevT }}</p>
+                    </div>
+                    <div class="col">
+                        <p><b>{{ 'Actions'|trans }}</b></p>
+                        <p>
+                        <ul>
+
+                                <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+
+                                <a href="{{ path('task_edit', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  <!--  <div class="col-lg-12 text-center">
+        <p>   <a role="button" href="{{ path('task_new') }}" class="btn btn-lg btn-info ">{{'Create a new task'|trans}}</a></p>
+    </div> -->
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

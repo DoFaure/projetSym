@@ -1,0 +1,77 @@
+Home: Home
+Project: Project
+Show: Show
+Add: Add
+Task: Task
+Stats: Stats
+User: User
+Profile: Profile
+'Change Password': 'Change Password'
+Logout: Logout
+'Change password': 'Change password'
+'Welcome to the Task Management Application': 'Welcome to the Task Management Application'
+Register: Register
+Login: Login
+'In progress project': 'In progress project'
+'In progress': 'In progress'
+Name: Name
+'Start Date': 'Start Date'
+'End Date': 'End Date'
+'Client name': 'Client name'
+Developer: Developer
+Tasks: Tasks
+Actions: Actions
+Edit: Edit
+'Completed project': 'Completed project'
+Completed: Completed
+'Aborted project': 'Aborted project'
+Abort: Abort
+'Create a new project': 'Create a new project'
+'Project manager': 'Project manager'
+Delete: Delete
+'Linked tasks': 'Linked tasks'
+Firstname: Firstname
+'Back to the list': 'Back to the list'
+'Add task': 'Add task'
+'In progress tasks': 'In progress tasks'
+'Completed tasks': 'Completed tasks'
+'Abort tasks': 'Abort tasks'
+'Create a new task': 'Create a new task'
+'Linked project': 'Linked project'
+'User list': 'User list'
+Administrator: Administrator
+Username: Username
+'First name': 'First name'
+'Last name': 'Last name'
+Projects: Projects
+OTHER: OTHER
+'Create a new user': 'Create a new user'
+'Linked projects': 'Linked projects'
+'label.name': Name
+label.description: Description
+label.start_date: 'Start date'
+label.end_date: 'End date'
+label.status: Status
+label.project: Project
+label.developer: Developer
+label.lastname: Lastname
+label.firstname: Firstname
+label.client_name: 'Client name'
+label.manager: 'Project manager'
+label.abort: Abort
+label.completed: Completed
+'label.progress': 'In progress'
+English: English
+French: French
+'Task Application':  Task Application'
+
+
+project.name: 'Name'
+project.description: 'Description'
+project.start_date: 'Start date'
+project.end_date: 'End date'
+project.client_name : 'Client name'
+project.manager : 'Project manager'
+project.abort : 'Abort'
+project.completed : 'Completed'
+project.progress : 'In progress'
