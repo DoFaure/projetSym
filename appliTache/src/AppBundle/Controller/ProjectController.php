@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Project controller.
@@ -25,9 +26,11 @@ class ProjectController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $projects = $em->getRepository('AppBundle:Project')->findAll();
+        $users = $em->getRepository('AppBundle:User')->findAll();
 
         return $this->render('project/index.html.twig', array(
             'projects' => $projects,
+            'users' => $users,
         ));
     }
 

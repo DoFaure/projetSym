@@ -1,21 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Task edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+<div id="wrapper">
+    <div id="container">
+        <div class="col-lg-12 text-center">
+            <h1>{{ 'Task edit'|trans }}</h1>
+            <br>
+            <div class="form-group">
+                {{ form_start(edit_form) }}
+                <div class="form-group row">
+                    <div class="col-sm-12">{{ form_row(edit_form.nomT) }} </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">   {{ form_row(edit_form.descriptionT) }} </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">  {{ form_row(edit_form.dateDebutT) }} </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12"> {{ form_row(edit_form.dateFinT) }} </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12"> {{ form_row(edit_form.etatT) }} </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12"> {{ form_row(edit_form.idDevT) }}</div>
+                </div>
+                <input type="submit" class="btn btn-success" value="{{ 'Edit'|trans }}" />
+                {{ form_end(edit_form) }}
+            </div>
+        </div>
+        <div class="col-lg-12 text-center">
+            <ul>
+                <a class="btn btn-info" href="{{ path('task_index') }}">{{'Back to the list'|trans}}</a>
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -79,7 +79,7 @@
                         <p>
                             <ul>
 
-                                    <a href="{{ path('project_show', { 'id': task.idProjetT.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                                    <a href="{{ path('project_show', { 'id': task.idProjetT.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
 
                             </ul>
                         </p>
@@ -110,7 +110,7 @@
                         <p><b>{{ 'Actions'|trans }}</b></p>
 
                         <ul>
-                                <a href="{{ path('user_show', { 'id': task.idDevT.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                                <a href="{{ path('user_show', { 'id': task.idDevT.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
                         </ul>
 
                     </div>
@@ -120,7 +120,7 @@
 
     </div>
     <div class="col-lg-12 text-center">
-        <p> <a href="{{ path('task_index') }}" class="btn btn-lg btn-info ">{{ 'Back to the list'|trans }}</a></p>
+        <p> <a href="{{ path('task_index') }}" class="btn btn-lg btn-primary ">{{ 'Back to the list'|trans }}</a></p>
     </div>
 {% endblock %}
 

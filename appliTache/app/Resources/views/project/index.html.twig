@@ -3,176 +3,221 @@
 {% block body %}
 
     <div class="container-fluid height-full">
+        <br>
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_CHIEF') %}
+        <div class="col-lg-12 text-center">
+            <p> <a href="{{ path('project_new') }}" class="btn btn-lg btn-info ">{{ 'Create a new project'|trans }}</a></p>
+        </div>
+        {% endif %}
         <h1 class="text-center" id="project">{{ 'Projects list'|trans }}</h1>
-
-
         <div class="container">
-            <h2>{{ 'In progress project'|trans }}</h2>
-            {% for project in projects if project.etatP == 'project.progress' %}
-            <div class="card bg-light mb-3">
-                <div class="card-header">{{ project.nomP }}</div>
-                <div class="card-body">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h2>{{ 'In progress project'|trans }}</h2>
+                            </button>
+                        </h5>
+                    </div>
 
-                    <div id="ligne" class="row">
-                        <div class="col">
-                            <p><b>Id</b></p>
-                            <p><a>{{ project.id }}</a></p>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        {% for project in projects if project.etatP == 'project.progress' %}
+                        <div class="card bg-light mb-3">
+                            <div class="card-header">{{ project.nomP }}</div>
+                            <div class="card-body ">
+
+                                <div id="ligne" class="row">
+                                    <div class="col">
+                                        <p><b>Id</b></p>
+                                        <p><a>{{ project.id }}</a></p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Name'|trans }}</b></p>
+                                        <p>{{ project.nomP }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Description' }}</b></p>
+                                        <p>{{ project.descriptionP }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                                        <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'End Date'|trans }}</b></p>
+                                        <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Client name'|trans }}</b></p>
+                                        <p>{{ project.nomClient }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Developer'|trans }}</b></p>
+                                        <p>{{ project.idChefP }}</p>
+                                    </div>
+                                     <div class="col">
+                                      <p><b>{{ 'Tasks'|trans }}</b></p>
+                                         {%  for task in project.taches %}
+                                                <p>{{ task.nomT }}</p>
+                                            {% endfor %}
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Actions'|trans }}</b></p>
+                                        <p>
+                                            <ul>
+                                                    <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                                {% if is_granted("ROLE_ADMIN") or  project.idChefP == app.user  %}
+                                                    <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
+                                                    <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+                                                {% endif %}
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <p><b>{{ 'Name'|trans }}</b></p>
-                            <p>{{ project.nomP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Description' }}</b></p>
-                            <p>{{ project.descriptionP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Start Date'|trans }}</b></p>
-                            <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'End Date'|trans }}</b></p>
-                            <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Client name'|trans }}</b></p>
-                            <p>{{ project.nomClient }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Developer'|trans }}</b></p>
-                            <p>{{ project.idChefP }}</p>
-                        </div>
-                         <div class="col">
-                          <p><b>{{ 'Tasks'|trans }}</b></p>
-                             {%  for task in project.taches %}
+                        {% endfor %}
+            </div>
+
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <h2>{{ 'Completed project'|trans }}</h2>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+                {% for project in projects if project.etatP == 'project.completed' %}
+                <div class="card bg-success mb-3">
+                    <div class="card-header">{{ project.nomP }}</div>
+                    <div class="card-body">
+                        <div id="ligne" class="row">
+                            <div class="col">
+                                <p><b>Id</b></p>
+                                <p><a>{{ project.id }}</a></p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Name'|trans }}</b></p>
+                                <p>{{ project.nomP }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Description' }}</b></p>
+                                <p>{{ project.descriptionP }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Start Date'|trans }}</b></p>
+                                <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'End Date'|trans }}</b></p>
+                                <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Client name'|trans }}</b></p>
+                                <p>{{ project.nomClient }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Developer'|trans }}</b></p>
+                                <p>{{ project.idChefP }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Tasks'|trans }}</b></p>
+                                {%  for task in project.taches %}
                                     <p>{{ task.nomT }}</p>
                                 {% endfor %}
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Actions'|trans }}</b></p>
-                            <p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Actions'|trans }}</b></p>
+                                <p>
                                 <ul>
-                                        <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                                        <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                    {% if is_granted("ROLE_ADMIN") or  project.idChefP == app.user  %}
+                                        <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
                                         <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+
+                                    {% endif %}
+
                                 </ul>
-                            </p>
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
 
-            <h2>{{ 'Completed project'|trans }}</h2>
-            {% for project in projects if project.etatP == 'project.completed' %}
-            <div class="card bg-success mb-3">
-                <div class="card-header">{{ project.nomP }}</div>
-                <div class="card-body">
-                    <div id="ligne" class="row">
-                        <div class="col">
-                            <p><b>Id</b></p>
-                            <p><a>{{ project.id }}</a></p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Name'|trans }}</b></p>
-                            <p>{{ project.nomP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Description' }}</b></p>
-                            <p>{{ project.descriptionP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Start Date'|trans }}</b></p>
-                            <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'End Date'|trans }}</b></p>
-                            <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Client name'|trans }}</b></p>
-                            <p>{{ project.nomClient }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Developer'|trans }}</b></p>
-                            <p>{{ project.idChefP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Tasks'|trans }}</b></p>
-                            {%  for task in project.taches %}
-                                <p>{{ task.nomT }}</p>
-                            {% endfor %}
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Actions'|trans }}</b></p>
-                            <p>
-                            <ul>
-                                    <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-                                    <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
-                            </ul>
-                            </p>
-                        </div>
-                    </div>
-                 </div>
+
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                       <h2>{{ 'Aborted project'|trans }}</h2>
+                    </button>
+                </h5>
             </div>
-            {% endfor %}
 
-            <h2>{{ 'Aborted project'|trans }}</h2>
-            {% for project in projects if project.etatP == 'label.abort' %}
-             <div class="card bg-dark text-white mb-3">
-                <div class="card-header">{{ project.nomP }}</div>
-                <div class="card-body">
-                    <div id="ligne" class="row">
-                        <div class="col">
-                            <p><b>Id</b></p>
-                            <p><a>{{ project.id }}</a></p>
+            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+
+
+                {% for project in projects if project.etatP == 'label.abort' %}
+                 <div class="card bg-dark text-white mb-3">
+                    <div class="card-header">{{ project.nomP }}</div>
+                    <div class="card-body">
+                        <div id="ligne" class="row">
+                            <div class="col">
+                                <p><b>Id</b></p>
+                                <p><a>{{ project.id }}</a></p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Name'|trans }}</b></p>
+                                <p>{{ project.nomP }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Description' }}</b></p>
+                                <p>{{ project.descriptionP }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Start Date'|trans }}</b></p>
+                                <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'End Date'|trans }}</b></p>
+                                <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Client name'|trans }}</b></p>
+                                <p>{{ project.nomClient }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Developer'|trans }}</b></p>
+                                <p>{{ project.idChefP }}</p>
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Tasks'|trans }}</b></p>
+                                {%  for task in project.taches %}
+                                    <p>{{ task.nomT }}</p>
+                                {% endfor %}
+                            </div>
+                            <div class="col">
+                                <p><b>{{ 'Actions'|trans }}</b></p>
+                                <ul>
+                                        <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                    {% if is_granted("ROLE_ADMIN") or  project.idChefP == app.user  %}
+                                        <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
+                                        <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+                                    {% endif %}
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col">
-                            <p><b>{{ 'Name'|trans }}</b></p>
-                            <p>{{ project.nomP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Description' }}</b></p>
-                            <p>{{ project.descriptionP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Start Date'|trans }}</b></p>
-                            <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'End Date'|trans }}</b></p>
-                            <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Client name'|trans }}</b></p>
-                            <p>{{ project.nomClient }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Developer'|trans }}</b></p>
-                            <p>{{ project.idChefP }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Tasks'|trans }}</b></p>
-                            {%  for task in project.taches %}
-                                <p>{{ task.nomT }}</p>
-                            {% endfor %}
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Actions'|trans }}</b></p>
-                            <ul>
-                                    <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-                                    <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
-                            </ul>
-                        </div>
-                    </div>
+                     </div>
                  </div>
-             </div>
-            {% endfor %}
-
+                {% endfor %}
+            </div>
         </div>
     </div>
-    <div class="col-lg-12 text-center">
-        <p> <a href="{{ path('project_new') }}" class="btn btn-lg btn-info ">{{ 'Create a new project'|trans }}</a></p>
-    </div>
+
 
 {% endblock %}
 

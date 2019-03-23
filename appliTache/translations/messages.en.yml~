@@ -6,10 +6,11 @@ Task: Task
 Stats: Stats
 User: User
 Profile: Profile
+Account: Account
 'Change Password': 'Change Password'
 Logout: Logout
 'Change password': 'Change password'
-'Welcome to the Task Management Application': 'Welcome to the Task Management Application'
+'Welcome to the Tasks Management Application': 'Welcome to the Tasks Management Application'
 Register: Register
 Login: Login
 'In progress project': 'In progress project'
@@ -47,17 +48,31 @@ Projects: Projects
 OTHER: OTHER
 'Create a new user': 'Create a new user'
 'Linked projects': 'Linked projects'
-label.name: 'Name'
-label.description: 'Description'
+'label.name': Name
+label.description: Description
 label.start_date: 'Start date'
 label.end_date: 'End date'
-label.status : 'Status'
-label.project : 'Project'
-label.developer : 'Developer'
-label.lastname : 'Lastname'
-label.firstname : 'Firstname'
-label.client_name : 'Client name'
-label.manager : 'Project manager'
-label.abort : 'Abort'
-label.completed : 'Completed'
-label.progress : 'In progress'
+label.status: Status
+label.project: Project
+label.developer: Developer
+label.lastname: Lastname
+label.firstname: Firstname
+label.client_name: 'Client name'
+label.manager: 'Project manager'
+label.abort: Abort
+label.completed: Completed
+'label.progress': 'In progress'
+English: English
+French: French
+'Task Application':  Task Application'
+
+
+project.name: 'Name'
+project.description: 'Description'
+project.start_date: 'Start date'
+project.end_date: 'End date'
+project.client_name : 'Client name'
+project.manager : 'Project manager'
+project.abort : 'Abort'
+project.completed : 'Completed'
+project.progress : 'In progress'

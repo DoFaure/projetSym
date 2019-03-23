@@ -5,7 +5,11 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * User controller.
@@ -27,6 +31,40 @@ class UserController extends Controller
         $users = $em->getRepository('AppBundle:User')->findAll();
 
         return $this->render('user/index.html.twig', array(
+            'users' => $users,
+        ));
+    }
+
+    /**
+     * Use to list all dev available.
+     *
+     * @Route("/user/dev_available", name="user_dev_available")
+     * @Method("GET")
+     */
+    public function indexDevAvailable()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('user/devAvailable.html.twig', array(
+            'users' => $users,
+        ));
+    }
+
+    /**
+     * Use to list all project manager available.
+     *
+     * @Route("/user/manager_available", name="user_manager_available")
+     * @Method("GET")
+     */
+    public function indexChiefAvailable()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('AppBundle:User')->findAll();
+
+        return $this->render('user/managerAvailable.html.twig', array(
             'users' => $users,
         ));
     }
@@ -114,7 +152,7 @@ class UserController extends Controller
         $em->remove($user);
         $em->flush();
 
-        return $this->redirectToRoute('user_index');
+        return $this->redirectToRoute('homepage');
 
     }
 

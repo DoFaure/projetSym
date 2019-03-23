@@ -11,6 +11,7 @@ group:
         deleted: 'Le groupe a été supprimé.'
 security:
     login:
+        Login: Connexion
         username: 'Nom d''utilisateur'
         password: 'Mot de passe'
         remember_me: 'Se souvenir de moi'
@@ -33,6 +34,7 @@ registration:
     confirmed: 'Félicitations %username%, votre compte est maintenant activé.'
     back: 'Retour à la page d''origine.'
     submit: 'Créer un compte'
+    Register: 'Créer un compte'
     flash:
         user_created: 'L''utilisateur a été créé avec succès.'
     email:

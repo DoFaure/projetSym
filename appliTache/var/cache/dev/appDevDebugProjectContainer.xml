@@ -3179,23 +3179,58 @@
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
       <call method="add">
-        <argument type="service" id="security.request_matcher.x0_yxqh"/>
+        <argument type="service" id="security.request_matcher.pdmtjrc"/>
         <argument type="collection">
           <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id="security.request_matcher.pvk6hex"/>
+        <argument type="service" id="security.request_matcher.ftl30al"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher.sq3.phl"/>
+        <argument type="collection">
+          <argument>ROLE_CHIEF</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher.r7fyac0"/>
+        <argument type="collection">
+          <argument>ROLE_CHIEF</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher..xku9ki"/>
         <argument type="collection">
           <argument>ROLE_DEV</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id="security.request_matcher.ryqnbm1"/>
+        <argument type="service" id="security.request_matcher.cwwge1."/>
         <argument type="collection">
-          <argument>ROLE_CHIEF</argument>
+          <argument>ROLE_DEV</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher.v4dk_i8"/>
+        <argument type="collection">
+          <argument>ROLE_DEV</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id="security.request_matcher.hycfmw7"/>
+        <argument type="collection">
+          <argument>ROLE_DEV</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -3207,14 +3242,14 @@
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id="security.request_matcher.uqvjqsp"/>
+        <argument type="service" id="security.request_matcher.vc3qwps"/>
         <argument type="collection">
           <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id="security.request_matcher.2jd_drb"/>
+        <argument type="service" id="security.request_matcher.hznryau"/>
         <argument type="collection">
           <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
         </argument>
@@ -3632,8 +3667,8 @@
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <call method="setOptions">
         <argument type="collection">
+          <argument key="failure_path">/fr/login</argument>
           <argument key="login_path">/login</argument>
-          <argument key="failure_path">null</argument>
           <argument key="failure_forward">false</argument>
           <argument key="failure_path_parameter">_failure_path</argument>
         </argument>
@@ -3707,23 +3742,38 @@
         <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
       </argument>
     </service>
-    <service id="security.request_matcher.x0_yxqh" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/admin/</argument>
+    <service id="security.request_matcher.pdmtjrc" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/admin/user/index</argument>
     </service>
-    <service id="security.request_matcher.pvk6hex" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/task/</argument>
+    <service id="security.request_matcher.ftl30al" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/admin/user/show</argument>
     </service>
-    <service id="security.request_matcher.ryqnbm1" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/project/</argument>
+    <service id="security.request_matcher.sq3.phl" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/project/new</argument>
+    </service>
+    <service id="security.request_matcher.r7fyac0" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/project/delete/</argument>
+    </service>
+    <service id="security.request_matcher..xku9ki" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/project/</argument>
+    </service>
+    <service id="security.request_matcher.cwwge1." class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/task/</argument>
+    </service>
+    <service id="security.request_matcher.v4dk_i8" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/admin/user/dev_available</argument>
+    </service>
+    <service id="security.request_matcher.hycfmw7" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/admin/user/manager_available</argument>
     </service>
     <service id="security.request_matcher.xju5a14" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/(login$|resetting|register)</argument>
     </service>
-    <service id="security.request_matcher.uqvjqsp" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/$</argument>
+    <service id="security.request_matcher.vc3qwps" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/$</argument>
     </service>
-    <service id="security.request_matcher.2jd_drb" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/</argument>
+    <service id="security.request_matcher.hznryau" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/fr/</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>

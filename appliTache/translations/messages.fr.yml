@@ -1,4 +1,4 @@
-Home: Acceuil
+Home: Accueil
 Project: Projet
 Show: Afficher
 Add: Ajouter
@@ -6,10 +6,11 @@ Task: Tâche
 Stats: Stats
 User: Utilisateur
 Profile: Profil
+Account: Compte
 'Change Password': 'Changer le mot de passe'
 Logout: Deconnexion
 'Change password': 'Changer le mot de passe'
-'Welcome to the Task Management Application': 'Bienvenue sur l''application de gestion de tâche'
+'Welcome to the Tasks Management Application': 'Bienvenue sur l''application de gestion de tâches'
 Register: Enregistrement
 Login: Connexion
 'In progress project': 'Projet en cours'
@@ -25,9 +26,10 @@ Edit: Editer
 'Projects list': 'Liste des projets'
 'Completed project': 'Projet terminé'
 Completed: Terminé
-'Aborted project': 'Projet en suspend'
+'Aborted project': 'Projet en suspens'
 Abort: Suspendu
-'Create a new project': 'Creer un nouveau projet'
+'Add task': 'Ajouter une tâche'
+'Create a new project': 'Créer un nouveau projet'
 'Project manager': 'Chef de projet'
 Delete: Supprimer
 'Linked tasks': 'Tâches liées'
@@ -35,41 +37,55 @@ Firstname: Prenom
 'Back to the list': 'Revenir à la liste'
 'In progress tasks': 'Tâches en cours'
 'Completed tasks': 'Tâches terminées'
-'Abort tasks': 'Tâches en suspend'
-'Create a new task': 'Creer une nouvelle tâche'
+'Abort tasks': 'Tâches en suspens'
+'Create a new task': 'Créer une nouvelle tâche'
 toto: toto
 'Linked project': 'Projet lié'
 'Users list': 'Liste des utilisateurs'
 Administrator: Administrateur
 Username: 'Nom d''utilisateur'
 'First name': 'Prenom '
-'Last name': 'Nom'
+'Last name': Nom
 Projects: Projets
+Users: Utilisateurs
 OTHER: AUTRE
-'French': 'Français'
-'English': 'Anglais'
-'Create a new user': 'Creer un nouvel utilisateur'
+French: Français
+English: Anglais
+'Create a new user': 'Créer un nouvel utilisateur'
 'Linked projects': 'Projets liés'
-label.name: 'Nom'
-label.description: 'Description'
+label.name: Nom
+label.description: Description
 label.start_date: 'Date de debut'
 label.end_date: 'Date de fin'
-label.status : 'Statut'
-label.project : 'Projet'
-label.developer : 'Developpeur'
-label.lastname : 'Nom'
-label.firstname : 'Prenom'
-label.client_name : 'Nom du client'
-label.manager : 'Nom du chef de projet'
-label.abort : 'En suspend'
-label.completed : 'Termniné'
-label.progress : 'En cours'
-project.name: 'Nom'
-project.description: 'Description'
+label.status: Statut
+label.project: Projet
+label.developer: Developpeur
+label.lastname: Nom
+label.firstname: Prenom
+label.client_name: 'Nom du client'
+label.manager: 'Nom du chef de projet'
+label.abort: 'En suspend'
+label.completed: Terminé
+label.progress: 'En cours'
+project.name: Nom
+project.description: Description
 project.start_date: 'Date de debut'
 project.end_date: 'Date de fin'
-project.client_name : 'Nom du client'
-project.manager : 'Nom du chef de projet'
-project.abort : 'En suspend'
-project.completed : 'Termniné'
-project.progress : 'En cours'
+project.client_name: 'Nom du client'
+project.manager: 'Nom du chef de projet'
+project.abort: 'En suspend'
+project.completed: Terminé
+project.progress: 'En cours'
+'Developer available': 'Developpeur disponible'
+'Project Manager available': 'Chef de projet disponible'
+'Task Application': 'Application de tâche'
+'Project edit': 'Editer un projet'
+'Project creation': 'Créer un projet'
+'Task edit': 'Editer une tâche'
+'Tasks list': 'Listes des tâches'
+'Task creation': 'Création de tâche'
+Create: Créer
+'Back to the Projects list': 'Revenir à la liste des projets'
+Lastname: Nom
+Other: Autre
+Roles: Rôles

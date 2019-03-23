@@ -2,24 +2,41 @@
 
 {% block body %}
 
-<div id="wrapper">
-    <div id="container">
-        <h1>Task creation</h1>
-            <div class="form-group">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-
-                <input class="btn btn-success" type="submit" value="Create" />
-            {{ form_end(form) }}
-
-            <ul>
-                <li>
-                    <a href="{{ path('task_index') }}">Back to the list</a>
-                </li>
-            </ul>
+    <div id="wrapper">
+        <div id="container">
+            <div class="col-lg-12 text-center">
+                <h1>{{ 'Task creation'|trans }}</h1>
+                <div class="form-group">
+                    {{ form_start(form) }}
+                    <div class="form-group row">
+                        <div class="col-sm-12">{{ form_row(form.nomT) }} </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">   {{ form_row(form.descriptionT) }} </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">  {{ form_row(form.dateDebutT) }} </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12"> {{ form_row(form.dateFinT) }} </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12"> {{ form_row(form.etatT) }} </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12"> {{ form_row(form.idDevT) }}</div>
+                    </div>
+                    <input type="submit" class="btn btn-success" value="{{ 'Create'|trans }}" />
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            <div class="col-lg-12 text-center">
+                <ul>
+                    <a class="btn btn-info" href="{{ path('project_index') }}">{{'Back to the Projects list'|trans}}</a>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 {% block stylesheets %}

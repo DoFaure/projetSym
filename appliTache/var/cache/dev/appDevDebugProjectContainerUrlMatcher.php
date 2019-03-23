@@ -202,6 +202,16 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_index']), array (  '_controller' => 'AppBundle\\Controller\\UserController::indexAction',  '_locale' => 'fr',));
         }
 
+        // user_dev_available
+        if (preg_match('#^/(?P<_locale>en|fr)/admin/user/dev_available$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_dev_available']), array (  '_controller' => 'AppBundle\\Controller\\UserController::indexDevAvailable',  '_locale' => 'fr',));
+        }
+
+        // user_manager_available
+        if (preg_match('#^/(?P<_locale>en|fr)/admin/user/manager_available$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_manager_available']), array (  '_controller' => 'AppBundle\\Controller\\UserController::indexChiefAvailable',  '_locale' => 'fr',));
+        }
+
         // user_new
         if (preg_match('#^/(?P<_locale>en|fr)/admin/user/new$#sD', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, ['_route' => 'user_new']), array (  '_controller' => 'AppBundle\\Controller\\UserController::newAction',  '_locale' => 'fr',));

@@ -23,10 +23,18 @@
                         <p>{{ user.lastname }}</p>
                     </div>
                     <div class="col">
+                        <p><b>{{ 'Roles'|trans }}</b></p>
+                        <ul>
+                    {% for role in user.roles %}
+                               <li>{{ role }}</li>
+                    {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col">
                         <p><b>{{ 'Actions'|trans }}</b></p>
                         <p>
                             <ul>
-                                    <a href="{{ path('user_edit', { 'id': user.id }) }} " class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
+                                  <!--  <a href="{{ path('user_edit', { 'id': user.id }) }} " class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a> -->
                                     <a href="{{ path('delete_user', {'id': user.id}) }}" class=" btn btn-danger btn-sm"> {{ 'Delete'|trans }}</a>
                             </ul>
                         </p>
@@ -34,105 +42,131 @@
                 </div>
             </div>
         </div>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h2>{{ 'Linked projects'|trans }}</h2>
+                        </button>
+                    </h5>
+                </div>
 
-        <h2>{{ 'Linked projects'|trans }}</h2>
-        {% for project in user.projetU %}
-        <div class="card bg-light mb-3">
-            <div class="card-header"><h5 class="text-center"><b>{{ project.nomP }}</b></h5></div>
-            <div class="card-body">
-                <div id="ligne" class="row">
-                    <div class="col">
-                        <p><b>Id</b></p>
-                        <p>{{ project.id }}</a></p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Description' }}</b></p>
-                        <p>{{ project.descriptionP }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Start Date'|trans }}</b></p>
-                        <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'End Date'|trans }}</b></p>
-                        <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Client name'|trans }}</b></p>
-                        <p>{{ project.nomClient }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Developer'|trans }}</b></p>
-                        <p>{{ project.idChefP }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Actions'|trans }}</b></p>
-                        <p>
-                        <ul>
 
-                            <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 
-                        </ul>
-                        </p>
+
+                    {% for project in user.projetU %}
+                    <div class="card bg-light mb-3">
+                        <div class="card-header"><h5 class="text-center"><b>{{ project.nomP }}</b></h5></div>
+                        <div class="card-body">
+                            <div id="ligne" class="row">
+                                <div class="col">
+                                    <p><b>Id</b></p>
+                                    <p>{{ project.id }}</a></p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Description' }}</b></p>
+                                    <p>{{ project.descriptionP }}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Start Date'|trans }}</b></p>
+                                    <p>{% if project.dateDebutP %}{{ project.dateDebutP|date('Y-m-d') }}{% endif %}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'End Date'|trans }}</b></p>
+                                    <p>{% if project.dateFinP %}{{ project.dateFinP|date('Y-m-d') }}{% endif %}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Client name'|trans }}</b></p>
+                                    <p>{{ project.nomClient }}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Developer'|trans }}</b></p>
+                                    <p>{{ project.idChefP }}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Actions'|trans }}</b></p>
+                                    <p>
+                                    <ul>
+
+                                        <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    {% endfor %}
+                </div>
+
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                            <h2>{{ 'Linked tasks'|trans }}</h2>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+
+
+
+                    {% for task in user.tacheU %}
+                    <div class="card bg-light mb-3">
+                        <div class="card-header"><h5 class="text-center"><b>{{ task.nomT }} </b></h5></div>
+                        <div class="card-body">
+                            <div id="ligne" class="row">
+                                <div class="col">
+                                    <p><b>Id</b></p>
+                                    <p>{{ task.id }}</a></p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Name'|trans }}</b></p>
+                                    <p></p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Description' }}</b></p>
+                                    <p>{{ task.descriptionT }}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Start Date'|trans }}</b></p>
+                                    <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'End Date'|trans }}</b></p>
+                                    <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Developer'|trans }}</b></p>
+                                    <p>{{ task.idDevT }}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Project'|trans }}</b></p>
+                                    <p>{{ task.idProjetT }}</p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ 'Actions'|trans }}</b></p>
+                                    <p>
+                                    <ul>
+
+                                        <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-        {% endfor %}
-
-        <h2>{{ 'Linked tasks'|trans }}</h2>
-
-        {% for task in user.tacheU %}
-        <div class="card bg-light mb-3">
-            <div class="card-header"><h5 class="text-center"><b>{{ task.nomT }} </b></h5></div>
-            <div class="card-body">
-                <div id="ligne" class="row">
-                    <div class="col">
-                        <p><b>Id</b></p>
-                        <p>{{ task.id }}</a></p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Name'|trans }}</b></p>
-                        <p></p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Description' }}</b></p>
-                        <p>{{ task.descriptionT }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Start Date'|trans }}</b></p>
-                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'End Date'|trans }}</b></p>
-                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Developer'|trans }}</b></p>
-                        <p>{{ task.idDevT }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Project'|trans }}</b></p>
-                        <p>{{ task.idProjetT }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Actions'|trans }}</b></p>
-                        <p>
-                        <ul>
-
-                            <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
 
     </div>
     <div class="col-lg-12 text-center">
-        <p> <a href="{{ path('user_index') }}" class="btn btn-lg btn-info ">{{ 'Back to the list'|trans }}</a></p>
+        <p> <a href="{{ path('user_index') }}" class="btn btn-lg btn-primary ">{{ 'Back to the list'|trans }}</a></p>
     </div>
 {% endblock %}
 

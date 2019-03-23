@@ -30,6 +30,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
                 check_path: fos_user_security_check
                 default_target_path: /%locale%
+                failure_path: /%locale%/login
             logout:
                 path:   fos_user_security_logout
                 target: /%locale%
@@ -39,11 +40,16 @@ security:
 
 
     access_control:
-        - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/task/, role: ROLE_DEV }
-        - { path: ^/project/, role: ROLE_CHIEF }
+        - { path: ^/%locale%/admin/user/index, role: ROLE_ADMIN }
+        - { path: ^/%locale%/admin/user/show, role: ROLE_ADMIN }
+        - { path: ^/%locale%/project/new, role: ROLE_CHIEF }
+        - { path: ^/%locale%/project/delete/, role: ROLE_CHIEF }
+        - { path: ^/%locale%/project/, role: ROLE_DEV }
+        - { path: ^/%locale%/task/, role: ROLE_DEV }
+        - { path: ^/%locale%/admin/user/dev_available, role: ROLE_DEV }
+        - { path: ^/%locale%/admin/user/manager_available, role: ROLE_DEV }
         - { path: ^/(login$|resetting|register), role: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY}
-        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/%locale%/$, role: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/%locale%/, role: IS_AUTHENTICATED_ANONYMOUSLY}
 
 

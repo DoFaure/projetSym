@@ -17,12 +17,14 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $projects = $em->getRepository('AppBundle:Project')->findAll();
+        $users = $em->getRepository('AppBundle:User')->findAll();
 
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig',[
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-            'projects' => $projects
+            'projects' => $projects,
+            'users' => $users,
         ]);
     }
 }

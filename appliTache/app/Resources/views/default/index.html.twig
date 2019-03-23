@@ -1,17 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
 
             {% if  is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <div class="container">
+
+
         <div class="card bg-light mb-3" id="container">
             <div class="card-body">
                 <div id="welcome" class="text-center">
-                    <h1><span>{{ 'Welcome to the Task Management Application'|trans }}</span></h1>
+                    <h1><span>{{ 'Welcome to the Tasks Management Application'|trans }}</span></h1>
                 </div>
             </div>
         </div>
-        <div>
+    </div>
         <div class="col-lg-12">
                 <div class="card-deck">
                {% for project in projects if project.etatP == 'project.progress' %}
@@ -40,11 +42,11 @@
                                     </div>
                                     <div class="col">
                                         <p><b>{{ 'Actions'|trans }}</b></p>
-                                        {% if is_granted("ROLE_ADMIN") or  is_granted("ROLE_CHIEF")   %}
+                                        {% if is_granted("ROLE_ADMIN") or  project.idChefP == app.user  %}
 
                                             <p>
                                                 <ul>
-                                            <p> <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a></p>
+                                            <p> <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a></p>
                                             <p> <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a></p>
                                             <p> <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a></p>
                                             </ul>
@@ -52,7 +54,7 @@
                                         {% else %}
                                             <p>
                                                 <ul>
-                                                    <p> <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a></p>
+                                                    <p> <a href="{{ path('project_show', { 'id': project.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a></p>
                                                 </ul>
                                             </p>
                                         {% endif %}
@@ -65,12 +67,11 @@
                 {% endfor %}
             </div>
 
-        </div>
             {% else %}
                 <div class="card bg-light mb-3" id="container">
                     <div class="card-body">
                         <div id="welcome" class="text-center">
-                            <h1><span>{{ 'Welcome to the Task Management Application'|trans }}</span></h1>
+                            <h1><span>{{ 'Welcome to the Tasks Management Application'|trans }}</span></h1>
                         </div>
                 {% set menuConnexion = [
                     { 'path' : 'fos_user_registration_register', 'name' : 'Register'|trans  },
@@ -87,7 +88,6 @@
                     </div>
                 </div>
             {% endif %}
-
     </div>
 {% endblock %}
 

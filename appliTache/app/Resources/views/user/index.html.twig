@@ -6,225 +6,280 @@
 
 
         <div class="container">
-            <h2>{{ 'Administrator'|trans }}</h2>
-            {% for user in users if 'ROLE_ADMIN' in user.roles %}
-            <div class="card bg-light mb-3">
-                <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
-                <div class="card-body">
-
-                    <div id="ligne" class="row">
-                        <div class="col">
-                            <p><b>{{ 'Email' }}</b></p>
-                            <p>{{ user.email }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'First name'|trans }}</b></p>
-                            <p>{{ user.firstname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Last name'|trans }}</b></p>
-                            <p>{{ user.lastname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Projects'|trans }}</b></p>
-                            {% for project in user.projetU %}
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-                        </div>
-
-                        <div class="col">
-                            <p><b>{{ 'Tasks'|trans }}</b></p>
-                            {% for task in user.tacheU %}
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Actions'|trans }}</b></p>
-                            <p>
-                            <ul>
-                                <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-                                <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
-                            </ul>
-                            </p>
-                        </div>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h2>{{ 'Administrator'|trans }}</h2>
+                            </button>
+                        </h5>
                     </div>
-                </div>
-            </div>
-            {% endfor %}
 
-            <h2>{{ 'Project manager'|trans }}</h2>
-            {% for user in users if 'ROLE_CHIEF' in user.roles and 'ROLE_ADMIN' not in user.roles %}
-            <div class="card bg-light mb-3">
-                <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
-                <div class="card-body">
 
-                    <div id="ligne" class="row">
-                        <div class="col">
-                            <p><b>{{ 'Email' }}</b></p>
-                            <p>{{ user.email }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'First name'|trans }}</b></p>
-                            <p>{{ user.firstname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Last name'|trans }}</b></p>
-                            <p>{{ user.lastname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Projects'|trans }}</b></p>
-                            {% for project in user.projetU %}
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-                        </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        {% for user in users if 'ROLE_ADMIN' in user.roles %}
+                        <div class="card bg-light mb-3">
+                            <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
+                            <div class="card-body">
 
-                        <div class="col">
-                            <p><b>{{ 'Tasks'|trans }}</b></p>
-                            {% for task in user.tacheU %}
-                                <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
-                            {% endfor %}
+                                <div id="ligne" class="row">
+                                    <div class="col">
+                                        <p><b>{{ 'Email' }}</b></p>
+                                        <p>{{ user.email }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'First name'|trans }}</b></p>
+                                        <p>{{ user.firstname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Last name'|trans }}</b></p>
+                                        <p>{{ user.lastname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Projects'|trans }}</b></p>
+                                        {% for project in user.projetU %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="col">
+                                        <p><b>{{ 'Tasks'|trans }}</b></p>
+                                        {% for task in user.tacheU %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Actions'|trans }}</b></p>
+                                        <p>
+                                        <ul>
+                                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                          <!--  <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a> -->
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <p><b>{{ 'Actions'|trans }}</b></p>
-                            <p>
-                            <ul>
-                                <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-                                <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
-                            </ul>
-                            </p>
-                        </div>
+                        {% endfor %}
                     </div>
-                </div>
-            </div>
-            {% endfor %}
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                <h2>{{ 'Project manager'|trans }}</h2>
+                            </button>
+                        </h5>
+                    </div>
 
-            <h2>{{ 'Developer'|trans }}</h2>
-            {% for user in users if 'ROLE_DEV' in user.roles and 'ROLE_ADMIN' not in user.roles
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+
+                        {% for user in users if 'ROLE_CHIEF' in user.roles and 'ROLE_ADMIN' not in user.roles %}
+                        <div class="card bg-light mb-3">
+                            <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
+                            <div class="card-body">
+
+                                <div id="ligne" class="row">
+                                    <div class="col">
+                                        <p><b>{{ 'Email' }}</b></p>
+                                        <p>{{ user.email }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'First name'|trans }}</b></p>
+                                        <p>{{ user.firstname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Last name'|trans }}</b></p>
+                                        <p>{{ user.lastname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Projects'|trans }}</b></p>
+                                        {% for project in user.projetU %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="col">
+                                        <p><b>{{ 'Tasks'|trans }}</b></p>
+                                        {% for task in user.tacheU %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Actions'|trans }}</b></p>
+                                        <p>
+                                        <ul>
+                                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                          <!--  <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a> -->
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                <h2>{{ 'Developer'|trans }}</h2>
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+
+                        {% for user in users if 'ROLE_DEV' in user.roles and 'ROLE_ADMIN' not in user.roles
+                                                                        and 'ROLE_CHIEF' not in user.roles %}
+
+                        <div class="card bg-light mb-3">
+                            <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
+                            <div class="card-body">
+
+                                <div id="ligne" class="row">
+                                    <div class="col">
+                                        <p><b>{{ 'Email' }}</b></p>
+                                        <p>{{ user.email }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'First name'|trans }}</b></p>
+                                        <p>{{ user.firstname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Last name'|trans }}</b></p>
+                                        <p>{{ user.lastname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Projects'|trans }}</b></p>
+                                        {% for project in user.projetU %}
+                                         <ul>
+                                             <li>
+                                                 <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
+                                             </li>
+                                         </ul>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="col">
+                                        <p><b>{{ 'Tasks'|trans }}</b></p>
+                                        {% for task in user.tacheU %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Actions'|trans }}</b></p>
+                                        <p>
+                                        <ul>
+                                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                          <!--  <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a> -->
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFourth" aria-expanded="true" aria-controls="collapseFourth">
+                                <h2>{{ 'Other'|trans }}</h2>
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseFourth" class="collapse show" aria-labelledby="headingFourth" data-parent="#accordionExample">
+
+                        {% for user in users if 'ROLE_USER' in user.roles
+                                                            and 'ROLE_ADMIN' not in user.roles
+                                                            and 'ROLE_DEV' not in user.roles
                                                             and 'ROLE_CHIEF' not in user.roles %}
 
-            <div class="card bg-light mb-3">
-                <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
-                <div class="card-body">
+                        <div class="card bg-light mb-3">
+                            <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
+                            <div class="card-body">
+                                <div id="ligne" class="row">
+                                    <div class="col">
+                                        <p><b>{{ 'Username'|trans }}</b></p>
+                                        <p>{{ user.username }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Email' }}</b></p>
+                                        <p>{{ user.email }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'First name'|trans }}</b></p>
+                                        <p>{{ user.firstname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Last name'|trans }}</b></p>
+                                        <p>{{ user.lastname }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Projects'|trans }}</b></p>
+                                        {% for project in user.projetU %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
 
-                    <div id="ligne" class="row">
-                        <div class="col">
-                            <p><b>{{ 'Email' }}</b></p>
-                            <p>{{ user.email }}</p>
+                                    <div class="col">
+                                        <p><b>{{ 'Tasks'|trans }}</b></p>
+                                        {% for task in user.tacheU %}
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
+                                                </li>
+                                            </ul>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Actions'|trans }}</b></p>
+                                        <p>
+                                        <ul>
+                                            <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                      <!--      <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>  -->
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <p><b>{{ 'First name'|trans }}</b></p>
-                            <p>{{ user.firstname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Last name'|trans }}</b></p>
-                            <p>{{ user.lastname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Projects'|trans }}</b></p>
-                            {% for project in user.projetU %}
-                             <ul>
-                                 <li>
-                                     <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
-                                 </li>
-                             </ul>
-                            {% endfor %}
-                        </div>
-
-                        <div class="col">
-                            <p><b>{{ 'Tasks'|trans }}</b></p>
-                            {% for task in user.tacheU %}
-                                <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
-                            {% endfor %}
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Actions'|trans }}</b></p>
-                            <p>
-                            <ul>
-                                <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-                                <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
-                            </ul>
-                            </p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            {% endfor %}
-
-            <h2>{{ 'OTHER'|trans }}</h2>
-            {% for user in users if 'ROLE_USER' in user.roles
-                                                and 'ROLE_ADMIN' not in user.roles
-                                                and 'ROLE_DEV' not in user.roles
-                                                and 'ROLE_CHIEF' not in user.roles %}
-
-            <div class="card bg-light mb-3">
-                <div class="card-header"><h5><b>{{ user.username }} </b></h5></div>
-                <div class="card-body">
-                    <div id="ligne" class="row">
-                        <div class="col">
-                            <p><b>{{ 'Username'|trans }}</b></p>
-                            <p>{{ user.username }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Email' }}</b></p>
-                            <p>{{ user.email }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'First name'|trans }}</b></p>
-                            <p>{{ user.firstname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Last name'|trans }}</b></p>
-                            <p>{{ user.lastname }}</p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Projects'|trans }}</b></p>
-                            {% for project in user.projetU %}
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('project_show', { 'id': project.id }) }}">{{ project.nomP }}</a>
-                                    </li>
-                                </ul>
-                            {% endfor %}
-                        </div>
-
-                        <div class="col">
-                            <p><b>{{ 'Tasks'|trans }}</b></p>
-                            {% for task in user.tacheU %}
-                                <a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.nomT }}</a>
-                            {% endfor %}
-                        </div>
-                        <div class="col">
-                            <p><b>{{ 'Actions'|trans }}</b></p>
-                            <p>
-                            <ul>
-                                <a href="{{ path('user_show', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-                                <a href="{{ path('user_edit', { 'id': user.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a>
-                            </ul>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
 
         </div>
     </div>
 
     <div class="col-lg-12 text-center">
 
-        <a href="{{ path('fos_user_registration_register') }}"  role="button"  class="btn btn-lg btn-info ">{{'Create a new user'|trans}}</a>
+       <!-- <a href="{{ path('fos_user_registration_register') }}"  role="button"  class="btn btn-lg btn-info ">{{'Create a new user'|trans}}</a> -->
     </div>
 
 {% endblock %}

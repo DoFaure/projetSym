@@ -1,10 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% if  project.etatP == 'project.progress' %}
+        {% set cardcolorP='bg-light' %}
+        {% set cardtextP='text-dark' %}
+    {% elseif project.etatP == 'project.completed' %}
+        {% set cardcolorP='bg-success' %}
+        {% set cardtextP='text-white' %}
+    {% else %}
+        {% set cardcolorP='bg-dark' %}
+        {% set cardtextP='text-white' %}
+    {% endif %}
+
     <h3 class="text-center">{{ 'Project'|trans }} n° {{ project.id }}</h3>
     <div class="container">
 
-        <div class="card bg-light mb-3">
+        <div class="card {{ cardcolorP }} {{ cardtextP }} mb-3">
 
             <div class="card-header"><h5><b> {{ project.nomP }}</b></h5></div>
             <div class="card-body">
@@ -33,7 +44,9 @@
                         <p>
                             <ul>
                                 <p> <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a></p>
-                                <p> <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a></p>
+                                {% if is_granted("ROLE_ADMIN") or  project.idChefP == user.id  %}
+                                    <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
+                                {% endif %}
                             </ul>
                         </p>
                         {% endif %}
@@ -43,53 +56,11 @@
         </div>
 
 
-        <h2>{{ 'Linked tasks'|trans }}</h2>
-
-        {% for task in project.taches %}
-        <div class="card bg-light mb-3">
-
-            <div class="card-header"><h5><b>{{ task.nomT }}</b></h5></div>
-            <div class="card-body">
-                <div id="ligne" class="row">
-                    <div class="col">
-                        <p><b>Id</b></p>
-                        <p>{{ task.id }}</a></p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Description' }}</b></p>
-                        <p>{{ task.descriptionT }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Start Date'|trans }}</b></p>
-                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'End Date'|trans }}</b></p>
-                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Developer'|trans }}</b></p>
-                        <p>{{ task.idDevT }}</p>
-                    </div>
-                    <div class="col">
-                        <p><b>{{ 'Actions'|trans }}</b></p>
-                        <p>
-                        <ul>
-
-                            <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
-
-                        </ul>
-                        </p>
-                    </div>
-                </div>
-             </div>
-        </div>
-        {% endfor %}
 
 
         <h2>{{ 'Project manager'|trans }}</h2>
         <div class="card bg-light mb-3">
-            <div class="card-header">{{ project.idChefP.firstname }} {{ project.idChefP.lastname }}</div>
+            <div class="card-header"><h5><b>{{ project.idChefP.firstname }} {{ project.idChefP.lastname }}</b></h5></div>
             <div class="card-body">
 
                 <div id="ligne" class="row">
@@ -104,16 +75,92 @@
                     <div class="col">
                         <p><b>{{ 'Actions'|trans }}</b></p>
                         <ul>
-                            <a href="{{ path('project_show', { 'id': project.idChefP.id }) }}" class="btn btn-sm btn-info">{{ 'Show'|trans }}</a>
+                            <a href="{{ path('user_show', { 'id': project.idChefP.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
                         </ul>
 
                     </div>
                 </div>
             </div>
         </div>
+
+        {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_CHIEF") or is_granted("ROLE_DEV") %}
+        <div class="col-lg-12 text-center">
+            <p> <a href="{{ path('task_add', {'id': project.id})  }}" class="btn btn-lg btn-primary">{{ 'Add task'|trans }}</a> </p>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h2>{{ 'Linked tasks'|trans }}</h2>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    {% endif %}
+                    {% for task in project.taches %}
+                        {% if  task.etatT == 'label.progress' %}
+                            {% set cardcolorT='bg-light' %}
+                            {% set cardtextT='text-dark' %}
+                        {% elseif task.etatT == 'label.completed' %}
+                            {% set cardcolorT='bg-success' %}
+                            {% set cardtextT='text-white' %}
+                        {% else %}
+                            {% set cardcolorT='bg-dark' %}
+                            {% set cardtextT='text-white' %}
+                        {% endif %}
+                        <div class="card {{ cardcolorT }} {{ cardtextT }} mb-3">
+
+                            <div class="card-header"><h5><b>{{ task.nomT }}</b></h5></div>
+                            <div class="card-body">
+                                <div id="ligne" class="row">
+                                    <div class="col">
+                                        <p><b>Id</b></p>
+                                        <p>{{ task.id }}</a></p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Description' }}</b></p>
+                                        <p>{{ task.descriptionT }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'End Date'|trans }}</b></p>
+                                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Developer'|trans }}</b></p>
+                                        <p>{{ task.idDevT }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Actions'|trans }}</b></p>
+                                        <p>
+                                        <ul>
+
+                                            <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+
+                                            {% if is_granted("ROLE_ADMIN")   or task.idDevT == user.id  %}
+                                                <a href="{{ path('task_edit', {'id': task.id}) }}" class=" btn btn-info btn-sm">{{ 'Edit'|trans }}</a>
+                                            {% endif %}
+                                            {% if is_granted("ROLE_ADMIN") or  project.idChefP == user.id  %}
+                                                <a href="{{ path('delete_task', {'id': task.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
+                                            {% endif %}
+
+
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
             <div class="col-lg-12 text-center">
-                <p> <a href="{{ path('user_index') }}" class="btn btn-lg btn-info ">{{ 'Back to the list'|trans }}</a></p>
-                <p> <a href="{{ path('task_add', {'id': project.id})  }}" class="btn btn-lg btn-primary">{{ 'Add task'|trans }}</a> </p>
+                <p> <a href="{{ path('project_index') }}" class="btn btn-lg btn-primary ">{{ 'Back to the list'|trans }}</a></p>
             </div>
 
     </div>
