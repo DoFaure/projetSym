@@ -125,19 +125,25 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
         echo "</b></p>
                         <p>
                         <ul>
-                               <p> <a href=\"";
+                            ";
         // line 32
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_edit", ["id" => $this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "id", [])]), "html", null, true);
-        echo "\" class=\"btn btn-sm btn-info\">";
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Edit"), "html", null, true);
-        echo "</a></p>
+        if ((($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || ($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idDevT", []) == $this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []))) || ($this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "idChefP", []) == $this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", [])))) {
+            // line 33
+            echo "                               <p> <a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_edit", ["id" => $this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "id", [])]), "html", null, true);
+            echo "\" class=\"btn btn-sm btn-info\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Edit"), "html", null, true);
+            echo "</a></p>
                                <p> <a href=\"";
-        // line 33
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("delete_task", ["id" => $this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "id", [])]), "html", null, true);
-        echo "\" class=\" btn btn-danger btn-sm\">";
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Delete"), "html", null, true);
-        echo "</a></p>
-                        </ul>
+            // line 34
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("delete_task", ["id" => $this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "id", [])]), "html", null, true);
+            echo "\" class=\" btn btn-danger btn-sm\">";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Delete"), "html", null, true);
+            echo "</a></p>
+                            ";
+        }
+        // line 36
+        echo "                        </ul>
                         </p>
                     </div>
                 </div>
@@ -146,12 +152,12 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
 
 
         <h2>";
-        // line 42
+        // line 44
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Linked project"), "html", null, true);
         echo "</h2>
         <div class=\"card bg-light mb-3\">
             <div class=\"card-header\"><h5><b>";
-        // line 44
+        // line 46
         echo twig_escape_filter($this->env, $this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "nomT", []), "html", null, true);
         echo "</b></h5></div>
             <div class=\"card-body\">
@@ -159,37 +165,37 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
                     <div class=\"col\">
                         <p><b>Id</b></p>
                         <p>";
-        // line 49
+        // line 51
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "id", []), "html", null, true);
         echo "</a></p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 52
+        // line 54
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Name"), "html", null, true);
         echo "</b></p>
                         <p>";
-        // line 53
+        // line 55
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "nomP", []), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 56
+        // line 58
         echo "Description";
         echo "</b></p>
                         <p>";
-        // line 57
+        // line 59
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "descriptionP", []), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 60
+        // line 62
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Start Date"), "html", null, true);
         echo "</b></p>
                         <p>";
-        // line 61
+        // line 63
         if ($this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "dateDebutP", [])) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "dateDebutP", []), "Y-m-d"), "html", null, true);
         }
@@ -197,11 +203,11 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 64
+        // line 66
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("End Date"), "html", null, true);
         echo "</b></p>
                         <p>";
-        // line 65
+        // line 67
         if ($this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "dateFinP", [])) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "dateFinP", []), "Y-m-d"), "html", null, true);
         }
@@ -209,39 +215,39 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 68
+        // line 70
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Client name"), "html", null, true);
         echo "</b></p>
                         <p>";
-        // line 69
+        // line 71
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "nomClient", []), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 72
+        // line 74
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Developer"), "html", null, true);
         echo "</b></p>
                         <p>";
-        // line 73
+        // line 75
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "idChefP", []), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 76
+        // line 78
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Actions"), "html", null, true);
         echo "</b></p>
                         ";
-        // line 77
+        // line 79
         if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CHIEF"))) {
-            // line 78
+            // line 80
             echo "
                         <p>
                             <ul>
 
                                     <a href=\"";
-            // line 82
+            // line 84
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_show", ["id" => $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idProjetT", []), "id", [])]), "html", null, true);
             echo "\" class=\"btn btn-sm btn-primary\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
@@ -251,19 +257,19 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
                         </p>
                         ";
         }
-        // line 87
+        // line 89
         echo "                    </div>
                 </div>
             </div>
         </div>
 
             <h2>";
-        // line 92
+        // line 94
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Developer"), "html", null, true);
         echo "</h2>
         <div class=\"card bg-light mb-3\">
             <div class=\"card-header\"><h5><b>";
-        // line 94
+        // line 96
         echo twig_escape_filter($this->env, $this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "nomT", []), "html", null, true);
         echo "</b></h5></div>
             <div class=\"card-body\">
@@ -271,39 +277,39 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
                     <div class=\"col\">
                         <p><b>Id</b></p>
                         <p>";
-        // line 99
+        // line 101
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idDevT", []), "id", []), "html", null, true);
         echo "</a></p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 102
+        // line 104
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Firstname"), "html", null, true);
         echo "</b></p>
                         <p>";
-        // line 103
+        // line 105
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idDevT", []), "firstname", []), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 106
+        // line 108
         echo "Lastname";
         echo "</b></p>
                         <p>";
-        // line 107
+        // line 109
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idDevT", []), "lastname", []), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"col\">
                         <p><b>";
-        // line 110
+        // line 112
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Actions"), "html", null, true);
         echo "</b></p>
 
                         <ul>
                                 <a href=\"";
-        // line 113
+        // line 115
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_show", ["id" => $this->getAttribute($this->getAttribute(($context["task"] ?? $this->getContext($context, "task")), "idDevT", []), "id", [])]), "html", null, true);
         echo "\" class=\"btn btn-sm btn-primary\">";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
@@ -318,7 +324,7 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
     </div>
     <div class=\"col-lg-12 text-center\">
         <p> <a href=\"";
-        // line 123
+        // line 125
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_index");
         echo "\" class=\"btn btn-lg btn-primary \">";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Back to the list"), "html", null, true);
@@ -333,7 +339,7 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
 
     }
 
-    // line 127
+    // line 129
     public function block_stylesheets($context, array $blocks = [])
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -342,7 +348,7 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 128
+        // line 130
         echo "
 ";
         
@@ -365,7 +371,7 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
 
     public function getDebugInfo()
     {
-        return array (  346 => 128,  337 => 127,  322 => 123,  307 => 113,  301 => 110,  295 => 107,  291 => 106,  285 => 103,  281 => 102,  275 => 99,  267 => 94,  262 => 92,  255 => 87,  245 => 82,  239 => 78,  237 => 77,  233 => 76,  227 => 73,  223 => 72,  217 => 69,  213 => 68,  205 => 65,  201 => 64,  193 => 61,  189 => 60,  183 => 57,  179 => 56,  173 => 53,  169 => 52,  163 => 49,  155 => 44,  150 => 42,  136 => 33,  130 => 32,  124 => 29,  118 => 26,  114 => 25,  106 => 22,  102 => 21,  94 => 18,  90 => 17,  84 => 14,  80 => 13,  73 => 9,  64 => 5,  61 => 4,  52 => 3,  22 => 1,);
+        return array (  352 => 130,  343 => 129,  328 => 125,  313 => 115,  307 => 112,  301 => 109,  297 => 108,  291 => 105,  287 => 104,  281 => 101,  273 => 96,  268 => 94,  261 => 89,  251 => 84,  245 => 80,  243 => 79,  239 => 78,  233 => 75,  229 => 74,  223 => 71,  219 => 70,  211 => 67,  207 => 66,  199 => 63,  195 => 62,  189 => 59,  185 => 58,  179 => 55,  175 => 54,  169 => 51,  161 => 46,  156 => 44,  146 => 36,  139 => 34,  132 => 33,  130 => 32,  124 => 29,  118 => 26,  114 => 25,  106 => 22,  102 => 21,  94 => 18,  90 => 17,  84 => 14,  80 => 13,  73 => 9,  64 => 5,  61 => 4,  52 => 3,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -409,8 +415,10 @@ class __TwigTemplate_3702bbee9370867fed58a2af54e8b4b9ae207a26f0a8897c85382672df5
                         <p><b>{{ 'Actions'|trans }}</b></p>
                         <p>
                         <ul>
+                            {% if is_granted(\"ROLE_ADMIN\") or  task.idDevT == app.user  or task.idProjetT.idChefP == app.user %}
                                <p> <a href=\"{{ path('task_edit', { 'id': task.id }) }}\" class=\"btn btn-sm btn-info\">{{ 'Edit'|trans }}</a></p>
                                <p> <a href=\"{{ path('delete_task', {'id': task.id}) }}\" class=\" btn btn-danger btn-sm\">{{ 'Delete'|trans }}</a></p>
+                            {% endif %}
                         </ul>
                         </p>
                     </div>

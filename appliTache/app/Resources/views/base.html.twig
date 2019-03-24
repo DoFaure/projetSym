@@ -17,7 +17,7 @@
 
             </style>
         {% endblock %}
-
+<!-- TEMPLATE DIFFERENT EN FONCTION DU ROLE -->
         {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_CHIEF")  %}
             {% set navColor='navbar-dark bg-dark' %}
             {% set navtext='text-white' %}
@@ -26,7 +26,7 @@
             {% set navtext='text-black' %}
         {% endif %}
 
-
+<!-- MENU ADMINISTRATEUR -->
         {% if is_granted("ROLE_ADMIN") %}
         <nav class="navbar navbar-expand-lg {{ navColor }} ">
             <a class="navbar-brand" href="{{ path('homepage') }}">AppliTache</a>
@@ -51,7 +51,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownProject">
                             <a class="dropdown-item" href="{{ path('project_index') }}">{{ 'Show'|trans }}</a>
-                            <a class="dropdown-item" href="{{ path('project_new') }}">{{ 'Add'|trans }}</a>
+                            <a class="dropdown-item" href="{{ path('project_new',  { 'id': app.user.id } ) }}">{{ 'Add'|trans }}</a>
+
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -105,6 +106,7 @@
                 </li>
             </ul>
         </nav>
+<!-- MENU CHEF DE PROJET -->
         {% elseif is_granted("ROLE_CHIEF") %}
             <nav class="navbar navbar-expand-lg {{ navColor }}">
                 <a class="navbar-brand" href="{{ path('homepage') }}">AppliTache</a>
@@ -126,7 +128,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownProject">
                                 <a class="dropdown-item" href="{{ path('project_index') }}">{{ 'Show'|trans }}</a>
-                                <a class="dropdown-item" href="{{ path('project_new') }}">{{ 'Add'|trans }}</a>
+                                <a class="dropdown-item" href="{{ path('project_new',  { 'id': app.user.id } ) }}">{{ 'Add'|trans }}</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -179,6 +181,7 @@
                     </li>
                 </ul>
             </nav>
+<!-- MENU DEVELOPPEUR -->
         {% elseif is_granted("ROLE_DEV") %}
             <nav class="navbar navbar-expand-lg {{ navColor }}">
                 <a class="navbar-brand" href="{{ path('homepage') }}">AppliTache</a>
@@ -252,6 +255,7 @@
                     </li>
                 </ul>
             </nav>
+<!-- MENU "PERSONNE LAMBDA" -->
         {% elseif is_granted("ROLE_USER") %}
             <nav class="navbar navbar-expand-lg {{ navColor }}">
                 <a class="navbar-brand" href="{{ path('homepage') }}">AppliTache</a>
@@ -296,6 +300,7 @@
                     </li>
                 </ul>
             </nav>
+<!-- MENU SI NON CONNECTER -->
         {% else %}
             <nav class="navbar navbar-expand-lg {{ navColor }}">
                 <a class="navbar-brand" href="{{ path('homepage') }}">AppliTache</a>

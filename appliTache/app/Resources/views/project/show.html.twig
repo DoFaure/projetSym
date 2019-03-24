@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <!-- CODE COULEUR EN FONCTION DE L'ETAT DU PROJET (blanc -> en cours ; vert -> terminé ; noir -> suspendu) -->
     {% if  project.etatP == 'project.progress' %}
         {% set cardcolorP='bg-light' %}
         {% set cardtextP='text-dark' %}
@@ -12,6 +14,8 @@
         {% set cardtextP='text-white' %}
     {% endif %}
 
+
+    <!-- ON AFFICHE LE PROJET -->
     <h3 class="text-center">{{ 'Project'|trans }} n° {{ project.id }}</h3>
     <div class="container">
 
@@ -44,7 +48,7 @@
                         <p>
                             <ul>
                                 <p> <a href="{{ path('project_edit', { 'id': project.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a></p>
-                                {% if is_granted("ROLE_ADMIN") or  project.idChefP == user.id  %}
+                                {% if is_granted("ROLE_ADMIN") or  project.idChefP == app.user  %}
                                     <a href="{{ path('delete_project', {'id': project.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
                                 {% endif %}
                             </ul>
@@ -56,7 +60,7 @@
         </div>
 
 
-
+        <!-- ENSUITE ON AFFICHE SON DEVELOPPEUR -->
 
         <h2>{{ 'Project manager'|trans }}</h2>
         <div class="card bg-light mb-3">
@@ -82,6 +86,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- ON AFFICHE TOUTES LES TÂCHES LIEES AU PROJET  -->
 
         {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_CHIEF") or is_granted("ROLE_DEV") %}
         <div class="col-lg-12 text-center">
@@ -142,10 +148,10 @@
 
                                             <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
 
-                                            {% if is_granted("ROLE_ADMIN")   or task.idDevT == user.id  %}
+                                            {% if is_granted("ROLE_ADMIN")   or task.idDevT == app.user  %}
                                                 <a href="{{ path('task_edit', {'id': task.id}) }}" class=" btn btn-info btn-sm">{{ 'Edit'|trans }}</a>
                                             {% endif %}
-                                            {% if is_granted("ROLE_ADMIN") or  project.idChefP == user.id  %}
+                                            {% if is_granted("ROLE_ADMIN") or  project.idChefP == app.user  %}
                                                 <a href="{{ path('delete_task', {'id': task.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
                                             {% endif %}
 

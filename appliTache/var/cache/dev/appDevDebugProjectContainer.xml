@@ -641,7 +641,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.dafjqty"/>
+      <argument type="service" id="service_locator.rxkz4k1"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -5123,6 +5123,10 @@
     <service id="abstract.instanceof.AppBundle\Form\UserType" class="AppBundle\Form\UserType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.app.form.registration" class="AppBundle\Form\RegistrationType" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.app.form.registration" class="AppBundle\Form\RegistrationType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="service_locator.vuupkft" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
     <service id="service_locator.pgcsqck" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -5139,7 +5143,7 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.dafjqty" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.rxkz4k1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>

@@ -2,6 +2,7 @@
 
 {% block body %}
 
+    <!-- ON AFFICHE LA TACHE -->
     <h3 class="text-center">{{ 'Task'|trans }} n° {{ task.id }}</h3>
     <div class="container">
 
@@ -29,8 +30,10 @@
                         <p><b>{{ 'Actions'|trans }}</b></p>
                         <p>
                         <ul>
+                            {% if is_granted("ROLE_ADMIN") or  task.idDevT == app.user  or task.idProjetT.idChefP == app.user %}
                                <p> <a href="{{ path('task_edit', { 'id': task.id }) }}" class="btn btn-sm btn-info">{{ 'Edit'|trans }}</a></p>
                                <p> <a href="{{ path('delete_task', {'id': task.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a></p>
+                            {% endif %}
                         </ul>
                         </p>
                     </div>
@@ -38,6 +41,7 @@
              </div>
         </div>
 
+<!-- SON PROJECT LIE -->
 
         <h2>{{ 'Linked project'|trans }}</h2>
         <div class="card bg-light mb-3">
@@ -89,6 +93,8 @@
             </div>
         </div>
 
+    <!-- ET SON DEVELOPPEUR -->
+
             <h2>{{ 'Developer'|trans }}</h2>
         <div class="card bg-light mb-3">
             <div class="card-header"><h5><b>{{ task.nomT }}</b></h5></div>
@@ -118,6 +124,7 @@
             </div>
         </div>
 
+    <!-- RETOUR A LA LISTE -->
     </div>
     <div class="col-lg-12 text-center">
         <p> <a href="{{ path('task_index') }}" class="btn btn-lg btn-primary ">{{ 'Back to the list'|trans }}</a></p>

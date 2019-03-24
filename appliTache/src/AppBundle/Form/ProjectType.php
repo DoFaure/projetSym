@@ -28,8 +28,8 @@ class ProjectType extends AbstractType
                 ],
                 'label' => 'label.status'
             ])
-            ->add('nomClient', TextType::class ,array('label' => 'project.client_name'))
-            ->add('idChefP', null, array('label' => 'project.manager'));
+            ->add('nomClient', TextType::class ,array('label' => 'project.client_name'));
+           // ->add('idChefP', null, array('label' => 'project.manager'));
     }/**
      * {@inheritdoc}
      */

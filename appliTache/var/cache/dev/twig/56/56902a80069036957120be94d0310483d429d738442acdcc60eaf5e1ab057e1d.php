@@ -68,10 +68,10 @@ class __TwigTemplate_6675ae0b047f7206ab68f77f4a40340738eabac7f8d9bf8af5122fad887
             echo "        <div class=\"col-lg-12 text-center\">
             <p> <a href=\"";
             // line 9
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_new");
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_new", ["id" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "id", [])]), "html", null, true);
             echo "\" class=\"btn btn-lg btn-info \">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Create a new project"), "html", null, true);
-            echo "</a></p>
+            echo "</a>
         </div>
         ";
         }
@@ -644,7 +644,7 @@ class __TwigTemplate_6675ae0b047f7206ab68f77f4a40340738eabac7f8d9bf8af5122fad887
         <br>
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_CHIEF') %}
         <div class=\"col-lg-12 text-center\">
-            <p> <a href=\"{{ path('project_new') }}\" class=\"btn btn-lg btn-info \">{{ 'Create a new project'|trans }}</a></p>
+            <p> <a href=\"{{ path('project_new',  { 'id': app.user.id }) }}\" class=\"btn btn-lg btn-info \">{{ 'Create a new project'|trans }}</a>
         </div>
         {% endif %}
         <h1 class=\"text-center\" id=\"project\">{{ 'Projects list'|trans }}</h1>

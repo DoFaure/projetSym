@@ -143,16 +143,16 @@ class UserController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("delete/{id}", name= "delete_user")
      */
-    public function deleteTask(Request $request, User $user){
+    public function deleteUser(Request $request, User $user){
         if($user === null){
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('user_index');
         }
 
         $em = $this->getDoctrine()->getManager();
         $em->remove($user);
         $em->flush();
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('user_index');
 
     }
 

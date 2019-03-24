@@ -136,32 +136,33 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
             // line 54
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_new");
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_new", ["id" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "id", [])]), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Add"), "html", null, true);
             echo "</a>
+
                         </div>
                     </li>
                     <li class=\"nav-item dropdown\">
                         <a class=\"nav-link dropdown-toggle ";
-            // line 58
+            // line 59
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownTask\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             <i class=\"fas fa-tasks\"></i>
                             ";
-            // line 60
+            // line 61
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Tasks"), "html", null, true);
             echo "
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownTask\">
                             <a class=\"dropdown-item\" href=\"";
-            // line 63
+            // line 64
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                         <!--    <a class=\"dropdown-item\" href=\"";
-            // line 64
+            // line 65
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_new");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Add"), "html", null, true);
@@ -170,30 +171,30 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                     </li>
                     <li class=\"nav-item dropdown\">
                         <a class=\"nav-link dropdown-toggle ";
-            // line 68
+            // line 69
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownUser\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             <i class=\"fas fa-users\"></i>
                             ";
-            // line 70
+            // line 71
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Users"), "html", null, true);
             echo "
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownUser\">
                             <a class=\"dropdown-item\" href=\"";
-            // line 73
+            // line 74
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 74
+            // line 75
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_dev_available");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Developer available"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 75
+            // line 76
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_manager_available");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Project Manager available"), "html", null, true);
@@ -205,13 +206,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             <ul class=\"navbar-nav\">
                 <li class=\"nav-item dropdown dropdown-menu-right\">
                     <a href=\"";
-            // line 82
+            // line 83
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "en"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                         ";
-            // line 83
+            // line 84
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("English"), "html", null, true);
             echo "
                     </a>
@@ -220,13 +221,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             <ul class=\"navbar-nav\">
                 <li class=\"nav-item dropdown dropdown-menu-right\">
                     <a href=\"";
-            // line 89
+            // line 90
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "fr"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                         ";
-            // line 90
+            // line 91
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("French"), "html", null, true);
             echo "
                     </a>
@@ -235,30 +236,30 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             <ul class=\"navbar-nav\">
                 <li class=\"nav-item dropdown dropdown-menu-right\">
                     <a href=\"#\" class=\" nav-link dropdown-toggle ";
-            // line 96
+            // line 97
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" data-toggle=\"dropdown\" id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                         <i class=\"far fa-user\"></i>
                         ";
-            // line 98
+            // line 99
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Account"), "html", null, true);
             echo "
                     </a>
                     <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownProfile\">
                         <a class=\"dropdown-item\" href=\"";
-            // line 101
+            // line 102
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Change Password"), "html", null, true);
             echo "</a>
                         <a class=\"dropdown-item\" href=\"";
-            // line 102
+            // line 103
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_show");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                         <a class=\"dropdown-item\" href=\"";
-            // line 103
+            // line 104
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Logout"), "html", null, true);
@@ -269,12 +270,12 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
         </nav>
         ";
         } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CHIEF")) {
-            // line 109
+            // line 110
             echo "            <nav class=\"navbar navbar-expand-lg ";
             echo twig_escape_filter($this->env, ($context["navColor"] ?? $this->getContext($context, "navColor")), "html", null, true);
             echo "\">
                 <a class=\"navbar-brand\" href=\"";
-            // line 110
+            // line 111
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage");
             echo "\">AppliTache</a>
                 <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\" aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -284,39 +285,39 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item active\">
                             <a class=\"nav-link ";
-            // line 117
+            // line 118
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage");
             echo "\">
                                 <i class=\"fas fa-home\"></i>
                                 ";
-            // line 119
+            // line 120
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Home"), "html", null, true);
             echo "<span class=\"sr-only\">(current)</span></a>
                         </li>
 
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle ";
-            // line 123
+            // line 124
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownProject\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                                 <i class=\"fas fa-project-diagram\"></i>
                                 ";
-            // line 125
+            // line 126
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Projects"), "html", null, true);
             echo "
                             </a>
                             <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownProject\">
                                 <a class=\"dropdown-item\" href=\"";
-            // line 128
+            // line 129
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                                 <a class=\"dropdown-item\" href=\"";
-            // line 129
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_new");
+            // line 130
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_new", ["id" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "id", [])]), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Add"), "html", null, true);
             echo "</a>
@@ -324,24 +325,24 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                         </li>
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle ";
-            // line 133
+            // line 134
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownTask\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                                 <i class=\"fas fa-tasks\"></i>
                                 ";
-            // line 135
+            // line 136
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Tasks"), "html", null, true);
             echo "
                             </a>
                             <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownTask\">
                                 <a class=\"dropdown-item\" href=\"";
-            // line 138
+            // line 139
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                         <!--    <a class=\"dropdown-item\" href=\"";
-            // line 139
+            // line 140
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_new");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Add"), "html", null, true);
@@ -350,24 +351,24 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                         </li>
                     <li class=\"nav-item dropdown\">
                         <a class=\"nav-link dropdown-toggle ";
-            // line 143
+            // line 144
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownUser\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             <i class=\"fas fa-users\"></i>
                             ";
-            // line 145
+            // line 146
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Users"), "html", null, true);
             echo "
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownUser\">
                             <a class=\"dropdown-item\" href=\"";
-            // line 148
+            // line 149
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_dev_available");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Developer available"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 149
+            // line 150
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_manager_available");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Project Manager available"), "html", null, true);
@@ -379,13 +380,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 156
+            // line 157
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "en"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 157
+            // line 158
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("English"), "html", null, true);
             echo "
                         </a>
@@ -394,13 +395,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 163
+            // line 164
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "fr"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 164
+            // line 165
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("French"), "html", null, true);
             echo "
                         </a>
@@ -409,30 +410,30 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a class=\"nav-link dropdown-toggle ";
-            // line 170
+            // line 171
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownProfile\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             <i class=\"far fa-user\"></i>
                             ";
-            // line 172
+            // line 173
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Account"), "html", null, true);
             echo "
                         </a>
                         <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownProfile\">
                             <a class=\"dropdown-item\" href=\"";
-            // line 175
+            // line 176
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Change Password"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 176
+            // line 177
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_show");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 177
+            // line 178
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Logout"), "html", null, true);
@@ -443,12 +444,12 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             </nav>
         ";
         } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_DEV")) {
-            // line 183
+            // line 184
             echo "            <nav class=\"navbar navbar-expand-lg ";
             echo twig_escape_filter($this->env, ($context["navColor"] ?? $this->getContext($context, "navColor")), "html", null, true);
             echo "\">
                 <a class=\"navbar-brand\" href=\"";
-            // line 184
+            // line 185
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage");
             echo "\">AppliTache</a>
                 <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\" aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -458,32 +459,32 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item active\">
                             <a class=\"nav-link ";
-            // line 191
+            // line 192
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage");
             echo "\">
                                 <i class=\"fas fa-home\"></i>
                                 ";
-            // line 193
+            // line 194
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Home"), "html", null, true);
             echo "<span class=\"sr-only\">(current)</span></a>
                         </li>
 
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle ";
-            // line 197
+            // line 198
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownProject\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                                 <i class=\"fas fa-project-diagram\"></i>
                                 ";
-            // line 199
+            // line 200
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Projects"), "html", null, true);
             echo "
                             </a>
                             <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownProject\">
                                 <a class=\"dropdown-item\" href=\"";
-            // line 202
+            // line 203
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("project_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
@@ -492,24 +493,24 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                         </li>
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle ";
-            // line 206
+            // line 207
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownTask\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                                 <i class=\"fas fa-tasks\"></i>
                                 ";
-            // line 208
+            // line 209
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Tasks"), "html", null, true);
             echo "
                             </a>
                             <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownTask\">
                                 <a class=\"dropdown-item\" href=\"";
-            // line 211
+            // line 212
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_index");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                                 <!--    <a class=\"dropdown-item\" href=\"";
-            // line 212
+            // line 213
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_new");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Add"), "html", null, true);
@@ -518,24 +519,24 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                         </li>
                         <li class=\"nav-item dropdown\">
                             <a class=\"nav-link dropdown-toggle ";
-            // line 216
+            // line 217
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownUser\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                                 <i class=\"fas fa-users\"></i>
                                 ";
-            // line 218
+            // line 219
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Users"), "html", null, true);
             echo "
                             </a>
                             <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownUser\">
                                 <a class=\"dropdown-item\" href=\"";
-            // line 221
+            // line 222
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_dev_available");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Developer available"), "html", null, true);
             echo "</a>
                                 <a class=\"dropdown-item\" href=\"";
-            // line 222
+            // line 223
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("user_manager_available");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Project Manager available"), "html", null, true);
@@ -547,13 +548,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 229
+            // line 230
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "en"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 230
+            // line 231
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("English"), "html", null, true);
             echo "
                         </a>
@@ -562,13 +563,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 236
+            // line 237
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "fr"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 237
+            // line 238
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("French"), "html", null, true);
             echo "
                         </a>
@@ -577,30 +578,30 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a class=\"nav-link dropdown-toggle ";
-            // line 243
+            // line 244
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownProfile\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             <i class=\"far fa-user\"></i>
                             ";
-            // line 245
+            // line 246
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Account"), "html", null, true);
             echo "
                         </a>
                         <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownProfile\">
                             <a class=\"dropdown-item\" href=\"";
-            // line 248
+            // line 249
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Change password"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 249
+            // line 250
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_show");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 250
+            // line 251
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Logout"), "html", null, true);
@@ -611,12 +612,12 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             </nav>
         ";
         } elseif ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_USER")) {
-            // line 256
+            // line 257
             echo "            <nav class=\"navbar navbar-expand-lg ";
             echo twig_escape_filter($this->env, ($context["navColor"] ?? $this->getContext($context, "navColor")), "html", null, true);
             echo "\">
                 <a class=\"navbar-brand\" href=\"";
-            // line 257
+            // line 258
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage");
             echo "\">AppliTache</a>
                 <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\" aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -626,14 +627,14 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                     <ul class=\"navbar-nav\">
                         <li class=\"nav-item active\">
                             <a class=\"nav-link ";
-            // line 264
+            // line 265
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage");
             echo "\">
                                 <i class=\"fas fa-home\"></i>
                                 ";
-            // line 266
+            // line 267
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Home"), "html", null, true);
             echo "<span class=\"sr-only\">(current)</span></a>
                         </li>
@@ -643,13 +644,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 273
+            // line 274
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "en"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 274
+            // line 275
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("English"), "html", null, true);
             echo "
                         </a>
@@ -658,13 +659,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 280
+            // line 281
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "fr"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 281
+            // line 282
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("French"), "html", null, true);
             echo "
                         </a>
@@ -673,30 +674,30 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a class=\"nav-link dropdown-toggle ";
-            // line 287
+            // line 288
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\" href=\"#\" id=\"navbarDropdownProfile\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             <i class=\"far fa-user\"></i>
                             ";
-            // line 289
+            // line 290
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Account"), "html", null, true);
             echo "
                         </a>
                         <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownProfile\">
                             <a class=\"dropdown-item\" href=\"";
-            // line 292
+            // line 293
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_change_password");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Change password"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 293
+            // line 294
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_profile_show");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Show"), "html", null, true);
             echo "</a>
                             <a class=\"dropdown-item\" href=\"";
-            // line 294
+            // line 295
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
             echo "\">";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Logout"), "html", null, true);
@@ -707,12 +708,12 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             </nav>
         ";
         } else {
-            // line 300
+            // line 301
             echo "            <nav class=\"navbar navbar-expand-lg ";
             echo twig_escape_filter($this->env, ($context["navColor"] ?? $this->getContext($context, "navColor")), "html", null, true);
             echo "\">
                 <a class=\"navbar-brand\" href=\"";
-            // line 301
+            // line 302
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage");
             echo "\">AppliTache</a>
                 <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavDropdown\" aria-controls=\"navbarNavDropdown\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -721,13 +722,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 307
+            // line 308
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "en"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 308
+            // line 309
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("English"), "html", null, true);
             echo "
                         </a>
@@ -736,13 +737,13 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                 <ul class=\"navbar-nav\">
                     <li class=\"nav-item dropdown dropdown-menu-right\">
                         <a href=\"";
-            // line 314
+            // line 315
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("homepage", ["_locale" => "fr"]);
             echo "\" class=\" nav-link ";
             echo twig_escape_filter($this->env, ($context["navtext"] ?? $this->getContext($context, "navtext")), "html", null, true);
             echo "\"  id=\"navbarDropdownProfile\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">
                             ";
-            // line 315
+            // line 316
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("French"), "html", null, true);
             echo "
                         </a>
@@ -751,16 +752,16 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
             </nav>
         ";
         }
-        // line 321
+        // line 322
         echo "    </head>
     <body>
         ";
-        // line 323
-        $this->displayBlock('body', $context, $blocks);
         // line 324
+        $this->displayBlock('body', $context, $blocks);
+        // line 325
         echo "        ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 325
+        // line 326
         echo "        <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>
         <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js\" integrity=\"sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4\" crossorigin=\"anonymous\"></script>
         <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js\" integrity=\"sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1\" crossorigin=\"anonymous\"></script>
@@ -821,7 +822,7 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
 
     }
 
-    // line 323
+    // line 324
     public function block_body($context, array $blocks = [])
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -838,7 +839,7 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
 
     }
 
-    // line 324
+    // line 325
     public function block_javascripts($context, array $blocks = [])
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -867,7 +868,7 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
 
     public function getDebugInfo()
     {
-        return array (  842 => 324,  825 => 323,  806 => 10,  797 => 9,  779 => 8,  764 => 325,  761 => 324,  759 => 323,  755 => 321,  746 => 315,  740 => 314,  731 => 308,  725 => 307,  716 => 301,  711 => 300,  700 => 294,  694 => 293,  688 => 292,  682 => 289,  677 => 287,  668 => 281,  662 => 280,  653 => 274,  647 => 273,  637 => 266,  630 => 264,  620 => 257,  615 => 256,  604 => 250,  598 => 249,  592 => 248,  586 => 245,  581 => 243,  572 => 237,  566 => 236,  557 => 230,  551 => 229,  539 => 222,  533 => 221,  527 => 218,  522 => 216,  513 => 212,  507 => 211,  501 => 208,  496 => 206,  487 => 202,  481 => 199,  476 => 197,  469 => 193,  462 => 191,  452 => 184,  447 => 183,  436 => 177,  430 => 176,  424 => 175,  418 => 172,  413 => 170,  404 => 164,  398 => 163,  389 => 157,  383 => 156,  371 => 149,  365 => 148,  359 => 145,  354 => 143,  345 => 139,  339 => 138,  333 => 135,  328 => 133,  319 => 129,  313 => 128,  307 => 125,  302 => 123,  295 => 119,  288 => 117,  278 => 110,  273 => 109,  262 => 103,  256 => 102,  250 => 101,  244 => 98,  239 => 96,  230 => 90,  224 => 89,  215 => 83,  209 => 82,  197 => 75,  191 => 74,  185 => 73,  179 => 70,  174 => 68,  165 => 64,  159 => 63,  153 => 60,  148 => 58,  139 => 54,  133 => 53,  127 => 50,  122 => 48,  112 => 41,  105 => 39,  95 => 32,  90 => 31,  88 => 30,  84 => 28,  81 => 27,  78 => 26,  75 => 25,  72 => 24,  69 => 23,  66 => 22,  64 => 21,  61 => 20,  59 => 9,  55 => 8,  51 => 7,  43 => 2,  40 => 1,);
+        return array (  843 => 325,  826 => 324,  807 => 10,  798 => 9,  780 => 8,  765 => 326,  762 => 325,  760 => 324,  756 => 322,  747 => 316,  741 => 315,  732 => 309,  726 => 308,  717 => 302,  712 => 301,  701 => 295,  695 => 294,  689 => 293,  683 => 290,  678 => 288,  669 => 282,  663 => 281,  654 => 275,  648 => 274,  638 => 267,  631 => 265,  621 => 258,  616 => 257,  605 => 251,  599 => 250,  593 => 249,  587 => 246,  582 => 244,  573 => 238,  567 => 237,  558 => 231,  552 => 230,  540 => 223,  534 => 222,  528 => 219,  523 => 217,  514 => 213,  508 => 212,  502 => 209,  497 => 207,  488 => 203,  482 => 200,  477 => 198,  470 => 194,  463 => 192,  453 => 185,  448 => 184,  437 => 178,  431 => 177,  425 => 176,  419 => 173,  414 => 171,  405 => 165,  399 => 164,  390 => 158,  384 => 157,  372 => 150,  366 => 149,  360 => 146,  355 => 144,  346 => 140,  340 => 139,  334 => 136,  329 => 134,  320 => 130,  314 => 129,  308 => 126,  303 => 124,  296 => 120,  289 => 118,  279 => 111,  274 => 110,  263 => 104,  257 => 103,  251 => 102,  245 => 99,  240 => 97,  231 => 91,  225 => 90,  216 => 84,  210 => 83,  198 => 76,  192 => 75,  186 => 74,  180 => 71,  175 => 69,  166 => 65,  160 => 64,  154 => 61,  149 => 59,  139 => 54,  133 => 53,  127 => 50,  122 => 48,  112 => 41,  105 => 39,  95 => 32,  90 => 31,  88 => 30,  84 => 28,  81 => 27,  78 => 26,  75 => 25,  72 => 24,  69 => 23,  66 => 22,  64 => 21,  61 => 20,  59 => 9,  55 => 8,  51 => 7,  43 => 2,  40 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -933,7 +934,8 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                         </a>
                         <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownProject\">
                             <a class=\"dropdown-item\" href=\"{{ path('project_index') }}\">{{ 'Show'|trans }}</a>
-                            <a class=\"dropdown-item\" href=\"{{ path('project_new') }}\">{{ 'Add'|trans }}</a>
+                            <a class=\"dropdown-item\" href=\"{{ path('project_new',  { 'id': app.user.id } ) }}\">{{ 'Add'|trans }}</a>
+
                         </div>
                     </li>
                     <li class=\"nav-item dropdown\">
@@ -1008,7 +1010,7 @@ class __TwigTemplate_8bc47115be7aa1775b3756e0daa83d0c55d5349c5d338de5203afbbb703
                             </a>
                             <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdownProject\">
                                 <a class=\"dropdown-item\" href=\"{{ path('project_index') }}\">{{ 'Show'|trans }}</a>
-                                <a class=\"dropdown-item\" href=\"{{ path('project_new') }}\">{{ 'Add'|trans }}</a>
+                                <a class=\"dropdown-item\" href=\"{{ path('project_new',  { 'id': app.user.id } ) }}\">{{ 'Add'|trans }}</a>
                             </div>
                         </li>
                         <li class=\"nav-item dropdown\">

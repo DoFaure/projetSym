@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <!-- ON AFFICHE LA LISTE DE TOUTES LES TÂCHES DANS DIFFERENTS BLOCKS  -->
     <h1 class="text-center">{{ 'Tasks list'|trans }}</h1>
 
     <div class="container">
@@ -16,9 +18,10 @@
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 
+    <!-- LES TÄCHES EN COURS AVEC UN DEVELOPPEUR -->
                     {% for task in tasks if task.etatT == 'label.progress' %}
                     <div class="card bg-light mb-3">
-                        <div class="card-header">{{ task.nomT }}</div>
+                        <div class="card-header"><h5>{{ task.nomT }}</h5></div>
                         <div class="card-body">
                             <div id="ligne" class="row">
                                 <div class="col">
@@ -65,6 +68,9 @@
                     {% endfor %}
                 </div>
 
+
+
+    <!-- LES TÂCHES TERMINES -->
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -77,16 +83,12 @@
 
                     {% for task in tasks if task.etatT == 'label.completed' %}
                     <div class="card bg-success mb-3">
-                        <div class="card-header">{{ task.nomT }}</div>
+                        <div class="card-header"><h5>{{ task.nomT }}</h5></div>
                         <div class="card-body">
                             <div id="ligne" class="row">
                                 <div class="col">
                                     <p><b>Id</b></p>
                                     <p><a>{{ task.id }}</a></p>
-                                </div>
-                                <div class="col">
-                                    <p><b>{{ 'Name'|trans }}</b></p>
-                                    <p>{{ task.nomT }}</p>
                                 </div>
                                 <div class="col">
                                     <p><b>{{ 'Description' }}</b></p>
@@ -129,6 +131,8 @@
                 </div>
 
 
+
+    <!-- LES TÂCHES EN SUSPENS -->
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -143,17 +147,14 @@
 
                     {% for task in tasks if task.etatT == 'label.abort' %}
                     <div class="card bg-dark text-white mb-3">
-                        <div class="card-header">{{ task.nomT }}</div>
+                        <div class="card-header"><h5>{{ task.nomT }}</h5></div>
                         <div class="card-body">
                             <div id="ligne" class="row">
                                 <div class="col">
                                     <p><b>Id</b></p>
                                     <p><a>{{ task.id }}</a></p>
                                 </div>
-                                <div class="col">
-                                    <p><b>{{ 'Name'|trans }}</b></p>
-                                    <p>{{ task.nomT }}</p>
-                                </div>
+
                                 <div class="col">
                                     <p><b>{{ 'Description' }}</b></p>
                                     <p>{{ task.descriptionT }}</p>
@@ -193,6 +194,71 @@
                     </div>
                     {% endfor %}
                 </div>
+
+    <!-- TOUTES LES TÂCHES NON TERMINES OU SUSPENDU ET SANS DEVELOPPEUR -->
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsefourth" aria-expanded="true" aria-controls="collapsefourth">
+                            <h2>{{ 'Tasks without dev'|trans }}</h2>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapsefourth" class="collapse show" aria-labelledby="headingfourth" data-parent="#accordionExample">
+
+
+
+                    {% for task in tasks if (task.idDevT == '' and task.etatT !='label.abort' and task.etatT == 'label.completed')  %}
+                        <div class="card bg-light text-dark mb-3">
+                            <div class="card-header"><h5>{{ task.nomT }}</h5></div>
+                            <div class="card-body">
+                                <div id="ligne" class="row">
+                                    <div class="col">
+                                        <p><b>Id</b></p>
+                                        <p><a>{{ task.id }}</a></p>
+                                    </div>
+
+                                    <div class="col">
+                                        <p><b>{{ 'Description' }}</b></p>
+                                        <p>{{ task.descriptionT }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Start Date'|trans }}</b></p>
+                                        <p>{% if task.dateDebutT %}{{ task.dateDebutT|date('Y-m-d') }}{% endif %}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'End Date'|trans }}</b></p>
+                                        <p>{% if task.dateFinT %}{{ task.dateFinT|date('Y-m-d') }}{% endif %}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Project'|trans }}</b></p>
+                                        <p>{{ task.idProjetT }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Developer'|trans }}</b></p>
+                                        <p>{{ task.idDevT }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p><b>{{ 'Actions'|trans }}</b></p>
+                                        <p>
+                                        <ul>
+                                            <a href="{{ path('task_show', { 'id': task.id }) }}" class="btn btn-sm btn-primary">{{ 'Show'|trans }}</a>
+                                            {% if is_granted("ROLE_ADMIN")   or task.idDevT == app.user  %}
+                                                <a href="{{ path('task_edit', {'id': task.id}) }}" class=" btn btn-info btn-sm">{{ 'Edit'|trans }}</a>
+                                            {% endif %}
+                                            {% if is_granted("ROLE_ADMIN") or  task.idProjetT.idChefP == app.user  %}
+                                                <a href="{{ path('delete_task', {'id': task.id}) }}" class=" btn btn-danger btn-sm">{{ 'Delete'|trans }}</a>
+                                            {% endif %}
+                                        </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+
             </div>
         </div>
     </div>

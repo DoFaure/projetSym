@@ -84,6 +84,7 @@ project.progress: 'En cours'
 'Task edit': 'Editer une tâche'
 'Tasks list': 'Listes des tâches'
 'Task creation': 'Création de tâche'
+'Tasks without dev': 'Tâches sans développeur'
 Create: Créer
 'Back to the Projects list': 'Revenir à la liste des projets'
 Lastname: Nom

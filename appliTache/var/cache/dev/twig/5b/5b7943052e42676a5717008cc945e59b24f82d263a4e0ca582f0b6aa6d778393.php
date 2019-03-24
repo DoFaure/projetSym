@@ -175,7 +175,7 @@ class __TwigTemplate_882240508ea4e0745e26c0858340445a911db509f129907b49fa44454c2
             echo "</a></p>
                                 ";
             // line 47
-            if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || ($this->getAttribute(($context["project"] ?? $this->getContext($context, "project")), "idChefP", []) == $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "id", [])))) {
+            if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || ($this->getAttribute(($context["project"] ?? $this->getContext($context, "project")), "idChefP", []) == $this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", [])))) {
                 // line 48
                 echo "                                    <a href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("delete_project", ["id" => $this->getAttribute(($context["project"] ?? $this->getContext($context, "project")), "id", [])]), "html", null, true);
@@ -389,7 +389,7 @@ class __TwigTemplate_882240508ea4e0745e26c0858340445a911db509f129907b49fa44454c2
 
                                             ";
             // line 145
-            if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || ($this->getAttribute($context["task"], "idDevT", []) == $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "id", [])))) {
+            if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || ($this->getAttribute($context["task"], "idDevT", []) == $this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", [])))) {
                 // line 146
                 echo "                                                <a href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("task_edit", ["id" => $this->getAttribute($context["task"], "id", [])]), "html", null, true);
@@ -400,7 +400,7 @@ class __TwigTemplate_882240508ea4e0745e26c0858340445a911db509f129907b49fa44454c2
             }
             // line 148
             echo "                                            ";
-            if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || ($this->getAttribute(($context["project"] ?? $this->getContext($context, "project")), "idChefP", []) == $this->getAttribute(($context["user"] ?? $this->getContext($context, "user")), "id", [])))) {
+            if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN") || ($this->getAttribute(($context["project"] ?? $this->getContext($context, "project")), "idChefP", []) == $this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", [])))) {
                 // line 149
                 echo "                                                <a href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("delete_task", ["id" => $this->getAttribute($context["task"], "id", [])]), "html", null, true);
@@ -533,7 +533,7 @@ class __TwigTemplate_882240508ea4e0745e26c0858340445a911db509f129907b49fa44454c2
                         <p>
                             <ul>
                                 <p> <a href=\"{{ path('project_edit', { 'id': project.id }) }}\" class=\"btn btn-sm btn-info\">{{ 'Edit'|trans }}</a></p>
-                                {% if is_granted(\"ROLE_ADMIN\") or  project.idChefP == user.id  %}
+                                {% if is_granted(\"ROLE_ADMIN\") or  project.idChefP == app.user  %}
                                     <a href=\"{{ path('delete_project', {'id': project.id}) }}\" class=\" btn btn-danger btn-sm\">{{ 'Delete'|trans }}</a>
                                 {% endif %}
                             </ul>
@@ -631,10 +631,10 @@ class __TwigTemplate_882240508ea4e0745e26c0858340445a911db509f129907b49fa44454c2
 
                                             <a href=\"{{ path('task_show', { 'id': task.id }) }}\" class=\"btn btn-sm btn-primary\">{{ 'Show'|trans }}</a>
 
-                                            {% if is_granted(\"ROLE_ADMIN\")   or task.idDevT == user.id  %}
+                                            {% if is_granted(\"ROLE_ADMIN\")   or task.idDevT == app.user  %}
                                                 <a href=\"{{ path('task_edit', {'id': task.id}) }}\" class=\" btn btn-info btn-sm\">{{ 'Edit'|trans }}</a>
                                             {% endif %}
-                                            {% if is_granted(\"ROLE_ADMIN\") or  project.idChefP == user.id  %}
+                                            {% if is_granted(\"ROLE_ADMIN\") or  project.idChefP == app.user  %}
                                                 <a href=\"{{ path('delete_task', {'id': task.id}) }}\" class=\" btn btn-danger btn-sm\">{{ 'Delete'|trans }}</a>
                                             {% endif %}
 

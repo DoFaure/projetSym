@@ -108,12 +108,11 @@ class __TwigTemplate_d3b3a898a6b32d203ad203bcba8ac197b64259b63d8bbf652d4390e3ccb
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "nomClient", []), 'row');
         echo "</div>
                         </div>
-                        <div class=\"form-group row\">
-                            <div class=\"col-sm-12\"> ";
+                      <!--  <div class=\"form-group row\">
+                            <div class=\"col-sm-12\">";
         // line 31
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock($this->getAttribute(($context["form"] ?? $this->getContext($context, "form")), "idChefP", []), 'row');
         echo "</div>
-                        </div>
+                        </div> -->
                         <input type=\"submit\" class=\"btn btn-success\" value=\"Create\" />
                         ";
         // line 34
@@ -178,7 +177,7 @@ class __TwigTemplate_d3b3a898a6b32d203ad203bcba8ac197b64259b63d8bbf652d4390e3ccb
 
     public function getDebugInfo()
     {
-        return array (  153 => 47,  144 => 46,  128 => 39,  120 => 34,  114 => 31,  108 => 28,  102 => 25,  96 => 22,  90 => 19,  84 => 16,  78 => 13,  73 => 11,  68 => 9,  61 => 4,  52 => 3,  22 => 1,);
+        return array (  152 => 47,  143 => 46,  127 => 39,  119 => 34,  114 => 31,  108 => 28,  102 => 25,  96 => 22,  90 => 19,  84 => 16,  78 => 13,  73 => 11,  68 => 9,  61 => 4,  52 => 3,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -220,9 +219,9 @@ class __TwigTemplate_d3b3a898a6b32d203ad203bcba8ac197b64259b63d8bbf652d4390e3ccb
                         <div class=\"form-group row\">
                            <div class=\"col-sm-12\">  {{ form_row(form.nomClient) }}</div>
                         </div>
-                        <div class=\"form-group row\">
-                            <div class=\"col-sm-12\"> {{ form_row(form.idChefP) }}</div>
-                        </div>
+                      <!--  <div class=\"form-group row\">
+                            <div class=\"col-sm-12\">{# {{ form_row(form.idChefP) }} #}</div>
+                        </div> -->
                         <input type=\"submit\" class=\"btn btn-success\" value=\"Create\" />
                         {{ form_end(form) }}
                     </div>

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Project;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -40,7 +41,7 @@ class ProjectController extends Controller
      * @Route("/new", name="project_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+  /*  public function newAction(Request $request)
     {
         $project = new Project();
         $form = $this->createForm('AppBundle\Form\ProjectType', $project);
@@ -58,7 +59,36 @@ class ProjectController extends Controller
             'project' => $project,
             'form' => $form->createView(),
         ));
+    }*/
+
+    /**
+     * Creates a new task entity.
+     *
+     * @Route("/new/{id}", name="project_new")
+     * @Method({"GET", "POST"})
+     *
+     */
+    public function newProject(Request $request, User $user)
+    {
+        $project = new Project();
+        $form = $this->createForm('AppBundle\Form\ProjectType', $project, ['action' => $this->generateUrl('project_new',['id'=> $user->getId()])]);
+        $form->handleRequest($request);
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            return $this->render('project/new.html.twig', [
+                'form' => $form->createView(),
+                'project' => $project
+            ]);
+        }
+        $project->setIdChefP($user);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($project);
+        $em->flush();
+
+        return $this->redirectToRoute('project_show', array('id' => $project->getId()));
+
     }
+
 
     /**
      * Finds and displays a project entity.
@@ -111,7 +141,7 @@ class ProjectController extends Controller
      */
     public function deleteProject(Request $request, Project $project){
         if($project === null){
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('project_index');
         }
 
         $em = $this->getDoctrine()->getManager();

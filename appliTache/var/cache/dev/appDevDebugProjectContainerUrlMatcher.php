@@ -138,8 +138,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         not_project_index:
 
         // project_new
-        if (preg_match('#^/(?P<_locale>en|fr)/project/new$#sD', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_new']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::newAction',  '_locale' => 'fr',));
+        if (preg_match('#^/(?P<_locale>en|fr)/project/new/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'project_new']), array (  '_controller' => 'AppBundle\\Controller\\ProjectController::newProject',  '_locale' => 'fr',));
         }
 
         // project_show
@@ -229,7 +229,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         // delete_user
         if (preg_match('#^/(?P<_locale>en|fr)/admindelete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_user']), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteTask',  '_locale' => 'fr',));
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'delete_user']), array (  '_controller' => 'AppBundle\\Controller\\UserController::deleteUser',  '_locale' => 'fr',));
         }
 
         // fos_user_security_login

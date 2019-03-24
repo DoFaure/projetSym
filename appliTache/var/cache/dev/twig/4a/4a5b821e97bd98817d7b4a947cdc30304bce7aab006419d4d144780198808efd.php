@@ -173,7 +173,7 @@ class __TwigTemplate_c4a69f856a97648d6c141c9e870431cb1af62fda66c5def9ad756f0f3c2
                                             </ul>
                                             </p>
                                         ";
-                    } else {
+                    } elseif (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_DEV") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CHIEF"))) {
                         // line 55
                         echo "                                            <p>
                                                 <ul>
@@ -367,7 +367,7 @@ class __TwigTemplate_c4a69f856a97648d6c141c9e870431cb1af62fda66c5def9ad756f0f3c2
                                             <p> <a href=\"{{ path('delete_project', {'id': project.id}) }}\" class=\" btn btn-danger btn-sm\">{{ 'Delete'|trans }}</a></p>
                                             </ul>
                                             </p>
-                                        {% else %}
+                                        {% elseif is_granted(\"ROLE_DEV\") or  is_granted(\"ROLE_CHIEF\") %}
                                             <p>
                                                 <ul>
                                                     <p> <a href=\"{{ path('project_show', { 'id': project.id }) }}\" class=\"btn btn-sm btn-primary\">{{ 'Show'|trans }}</a></p>
